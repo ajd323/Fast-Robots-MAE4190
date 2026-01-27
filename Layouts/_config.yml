@@ -18,11 +18,8 @@ sass:
 permalink: /:categories/:title/
 
 collections:
-  pages:
+  labs:
     output: true
-  projects:
-    output: true
-    permalink: /:collection/:path/
 
 # Markdown
 markdown: kramdown
