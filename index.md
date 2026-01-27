@@ -5,9 +5,7 @@ title: Andrew D'Onofrio Bio
 
 ## About Me
 
-
-![Profile Picture]({{ "assets/images/Headshot.JPG" | relative_url }}){: class="profile-image"}
-
+![Profile Picture]({{ "/Headshot.JPG" | relative_url }}){: class="profile-image"}
  
 My name is Andrew D’Onofrio. I am a senior mechanical engineering student at Cornell University in the College of Engineering. I am currently exploring my interests in mechanical design and product development for medical applications, however, I am open to all related applications of mechanical problem-solving towards product development. Currently, I am a current Project Manager of the Cornell DEBUT project team, an undergraduate researcher for Dr. Yadong Wang’s Lab in collaboration with Anova Biomedical Inc., and a member of Cornell’s Rapid Prototyping Lab. Previously, I was a design consultant for Rev: Ithaca Start-Up Works and a visiting research intern for Dr. Yi-Xian Qin’s Lab at Stony Brook University.
 
