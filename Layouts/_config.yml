@@ -9,7 +9,7 @@ baseurl                  : "/Fast-Robots-MAE4190/" # Set this to your repo name
 
 # Theme and Style
 theme: jekyll-theme-minimal
-color_scheme: dark # light/default, dark, or aqua
+color_scheme: light # light/default, dark, or aqua
 
 sass:
   style: compressed
