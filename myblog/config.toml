@@ -1,7 +1,7 @@
 # Tanuki Theme - Blog Example
 base_url = "https://ajd323.github.io/Fast-Robots-MAE4190/"
-title = "Fast Robots Blog"
-description = "A blog about robotics projects and autonomous systems."
+title = "Andrew D'Onofrio Fast Robots Portfolio"
+description = "A compilation of labs from MAE 4190: Fast Robots class created by Andrew D'Onofrio"
 theme = "tanuki"
 compile_sass = true
 build_search_index = true
@@ -17,22 +17,22 @@ render_emoji = true
 smart_punctuation = true
 
 [extra]
-mode = "blog"
+mode = "docs"
 show_theme_toggle = true
 show_about_section = true
 
 # Author info
 [extra.author]
-name = "Robotics Team"
-bio = "Building fast autonomous robots and documenting our journey."
+name = "Andrew D'Onofrio"
+bio = "Senior Mechanical Engineering Student (B.S. '26)"
 
 # Hero section
 [extra.hero]
-title = "Fast Robots"
-subtitle = "Real-time robotics and autonomous systems engineering."
+title = "Fast Robots by Andrew D'Onofrio"
+subtitle = "MAE4190 Student Portfolio Page"
 [extra.hero.cta]
-text = "Read the blog"
-url = "/blog/"
+text = "Read the page!"
+url = "/docs/"
 
 # About preview on homepage
 [extra.about]
