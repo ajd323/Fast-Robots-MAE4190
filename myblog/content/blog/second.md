@@ -5,10 +5,6 @@ description = "Integrating IMU and distance sensors for autonomous navigation."
 taxonomies = { tags = ["sensors", "imu", "calibration"] }
 +++
 
-# Lab 2: Sensor Integration
-
-This lab adds perception capabilities to the robot through IMU and distance sensors.
-
 ## Objectives
 
 - Calibrate and integrate the IMU (gyroscope, accelerometer)

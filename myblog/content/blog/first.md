@@ -5,10 +5,6 @@ description = "Getting the robot up and running with basic motor control."
 taxonomies = { tags = ["embedded", "motors"] }
 +++
 
-# Lab 1: Robot Startup
-
-The first lab focuses on getting the basic hardware working and establishing reliable motor control.
-
 ## Objectives
 
 - Set up the microcontroller development environment
