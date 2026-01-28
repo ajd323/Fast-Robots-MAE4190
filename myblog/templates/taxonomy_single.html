@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{{ term.name }} - {{ config.title }}</title>
+</head>
+<body>
+  <header>
+    <h1>{{ term.name }}</h1>
+  </header>
+
+  <main>
+    {% if pages is defined %}
+      <ul>
+      {% for p in pages %}
+        <li><a href="{{ p.permalink }}">{{ p.title }}</a></li>
+      {% endfor %}
+      </ul>
+    {% else %}
+      <p>No pages for this term.</p>
+    {% endif %}
+  </main>
+</body>
+</html>
