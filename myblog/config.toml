@@ -2,6 +2,7 @@
 base_url = "https://ajd323.github.io/Fast-Robots-MAE4190/"
 title = "Fast Robots Blog"
 description = "A blog about robotics projects and autonomous systems."
+theme = "tanuki"
 compile_sass = true
 build_search_index = true
 generate_feeds = true
