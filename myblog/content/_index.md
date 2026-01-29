@@ -1,3 +1,4 @@
 +++
+template = "home.html"
 page_template = "page.html"
 +++

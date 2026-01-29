@@ -1,6 +1,6 @@
 +++
 title = "Lab 1: Robot Startup"
-date = 2024-01-15
+date = 2026-01-30
 description = "Getting the robot up and running with basic motor control."
 taxonomies = { tags = ["embedded", "motors"] }
 +++

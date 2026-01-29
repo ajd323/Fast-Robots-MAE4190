@@ -19,7 +19,7 @@ smart_punctuation = true
 [extra]
 mode = "docs"
 show_theme_toggle = true
-show_about_section = true
+show_about_section = false
 
 # Author info
 [extra.author]
@@ -30,9 +30,6 @@ bio = "Senior Mechanical Engineering Student (B.S. '26)"
 [extra.hero]
 title = "Fast Robots by Andrew D'Onofrio"
 subtitle = "MAE4190 Student Portfolio Page"
-[extra.hero.cta]
-text = "Read the page!"
-url = "/docs/"
 
 # About preview on homepage
 [extra.about]
@@ -44,5 +41,9 @@ github = "https://github.com/ajd323"
 
 # Navigation
 [[extra.nav]]
-name = "Blog"
+name = "Home"
+url = "/"
+
+[[extra.nav]]
+name = "Labs"
 url = "/blog/"

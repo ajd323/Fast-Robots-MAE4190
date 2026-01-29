@@ -1,6 +1,6 @@
 +++
 title = "Lab 2: Sensor Integration"
-date = 2024-02-01
+date = 2026-02-05
 description = "Integrating IMU and distance sensors for autonomous navigation."
 taxonomies = { tags = ["sensors", "imu", "calibration"] }
 +++
