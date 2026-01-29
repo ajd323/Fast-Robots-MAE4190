@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Andrew DOnofrio Fast Robots Portfolio - IMUs</title>
+      <link>https://ajd323.github.io/Fast-Robots-MAE4190/</link>
+      <description>A compilation of labs from MAE 4190: Fast Robots, created by Andrew DOnofrio.
+Hello, my name is Andrew DOnofrio — welcome to my portfolio for MAE 4190: Fast Robots!
+Please read through for projects relating to in-depth documentation on mechatronics and complex systems.
+</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://ajd323.github.io/Fast-Robots-MAE4190/tags/imus/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Tue, 10 Feb 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Lab 2: IMUs </title>
+          <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://ajd323.github.io/Fast-Robots-MAE4190/blog/second/</link>
+          <guid>https://ajd323.github.io/Fast-Robots-MAE4190/blog/second/</guid>
+          <description xml:base="https://ajd323.github.io/Fast-Robots-MAE4190/blog/second/">&lt;h2 id=&quot;objectives&quot;&gt;Objectives&lt;&#x2F;h2&gt;
+</description>
+      </item>
+    </channel>
+</rss>

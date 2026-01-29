@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Andrew DOnofrio Fast Robots Portfolio</title>
+      <link>https://ajd323.github.io/Fast-Robots-MAE4190/</link>
+      <description>A compilation of labs from MAE 4190: Fast Robots, created by Andrew DOnofrio.
+Hello, my name is Andrew DOnofrio — welcome to my portfolio for MAE 4190: Fast Robots!
+Please read through for projects relating to in-depth documentation on mechatronics and complex systems.
+</description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://ajd323.github.io/Fast-Robots-MAE4190/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Wed, 13 May 2026 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Lab 12: Kalman Filtering</title>
+          <pubDate>Wed, 13 May 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://ajd323.github.io/Fast-Robots-MAE4190/blog/twelth/</link>
+          <guid>https://ajd323.github.io/Fast-Robots-MAE4190/blog/twelth/</guid>
+          <description xml:base="https://ajd323.github.io/Fast-Robots-MAE4190/blog/twelth/">&lt;h2 id=&quot;objectives&quot;&gt;Objectives&lt;&#x2F;h2&gt;
+</description>
+      </item>
+      <item>
+          <title>Lab 10: Localization (real)</title>
+          <pubDate>Tue, 28 Apr 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://ajd323.github.io/Fast-Robots-MAE4190/blog/eleventh/</link>
+          <guid>https://ajd323.github.io/Fast-Robots-MAE4190/blog/eleventh/</guid>
+          <description xml:base="https://ajd323.github.io/Fast-Robots-MAE4190/blog/eleventh/">&lt;h2 id=&quot;objectives&quot;&gt;Objectives&lt;&#x2F;h2&gt;
+</description>
+      </item>
+      <item>
+          <title>Lab 10: Localization (sim)</title>
+          <pubDate>Tue, 21 Apr 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://ajd323.github.io/Fast-Robots-MAE4190/blog/tenth/</link>
+          <guid>https://ajd323.github.io/Fast-Robots-MAE4190/blog/tenth/</guid>
+          <description xml:base="https://ajd323.github.io/Fast-Robots-MAE4190/blog/tenth/">&lt;h2 id=&quot;objectives&quot;&gt;Objectives&lt;&#x2F;h2&gt;
+</description>
+      </item>
+      <item>
+          <title>Lab 9: Mapping</title>
+          <pubDate>Tue, 14 Apr 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://ajd323.github.io/Fast-Robots-MAE4190/blog/ninth/</link>
+          <guid>https://ajd323.github.io/Fast-Robots-MAE4190/blog/ninth/</guid>
+          <description xml:base="https://ajd323.github.io/Fast-Robots-MAE4190/blog/ninth/">&lt;h2 id=&quot;objectives&quot;&gt;Objectives&lt;&#x2F;h2&gt;
+</description>
+      </item>
+      <item>
+          <title>Lab 8: Stunts!</title>
+          <pubDate>Tue, 07 Apr 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://ajd323.github.io/Fast-Robots-MAE4190/blog/eigth/</link>
+          <guid>https://ajd323.github.io/Fast-Robots-MAE4190/blog/eigth/</guid>
+          <description xml:base="https://ajd323.github.io/Fast-Robots-MAE4190/blog/eigth/">&lt;h2 id=&quot;objectives&quot;&gt;Objectives&lt;&#x2F;h2&gt;
+</description>
+      </item>
+      <item>
+          <title>Lab 7: Kalman Filtering</title>
+          <pubDate>Tue, 24 Mar 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://ajd323.github.io/Fast-Robots-MAE4190/blog/seventh/</link>
+          <guid>https://ajd323.github.io/Fast-Robots-MAE4190/blog/seventh/</guid>
+          <description xml:base="https://ajd323.github.io/Fast-Robots-MAE4190/blog/seventh/">&lt;h2 id=&quot;objectives&quot;&gt;Objectives&lt;&#x2F;h2&gt;
+</description>
+      </item>
+      <item>
+          <title>Lab 6: Orientation PID</title>
+          <pubDate>Tue, 17 Mar 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://ajd323.github.io/Fast-Robots-MAE4190/blog/sixth/</link>
+          <guid>https://ajd323.github.io/Fast-Robots-MAE4190/blog/sixth/</guid>
+          <description xml:base="https://ajd323.github.io/Fast-Robots-MAE4190/blog/sixth/">&lt;h2 id=&quot;objectives&quot;&gt;Objectives&lt;&#x2F;h2&gt;
+</description>
+      </item>
+      <item>
+          <title>Lab 5: Linear PID and Linear Interpolation</title>
+          <pubDate>Tue, 10 Mar 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://ajd323.github.io/Fast-Robots-MAE4190/blog/fifth/</link>
+          <guid>https://ajd323.github.io/Fast-Robots-MAE4190/blog/fifth/</guid>
+          <description xml:base="https://ajd323.github.io/Fast-Robots-MAE4190/blog/fifth/">&lt;h2 id=&quot;objectives&quot;&gt;Objectives&lt;&#x2F;h2&gt;
+</description>
+      </item>
+      <item>
+          <title>Lab 4: Motor Drivers and Open Loop Control</title>
+          <pubDate>Tue, 03 Mar 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://ajd323.github.io/Fast-Robots-MAE4190/blog/fourth/</link>
+          <guid>https://ajd323.github.io/Fast-Robots-MAE4190/blog/fourth/</guid>
+          <description xml:base="https://ajd323.github.io/Fast-Robots-MAE4190/blog/fourth/">&lt;h2 id=&quot;objectives&quot;&gt;Objectives&lt;&#x2F;h2&gt;
+</description>
+      </item>
+      <item>
+          <title>Lab 3: Time of Flight (ToF)</title>
+          <pubDate>Tue, 24 Feb 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://ajd323.github.io/Fast-Robots-MAE4190/blog/third/</link>
+          <guid>https://ajd323.github.io/Fast-Robots-MAE4190/blog/third/</guid>
+          <description xml:base="https://ajd323.github.io/Fast-Robots-MAE4190/blog/third/">&lt;h2 id=&quot;objectives&quot;&gt;Objectives&lt;&#x2F;h2&gt;
+</description>
+      </item>
+      <item>
+          <title>Lab 2: IMUs </title>
+          <pubDate>Tue, 10 Feb 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://ajd323.github.io/Fast-Robots-MAE4190/blog/second/</link>
+          <guid>https://ajd323.github.io/Fast-Robots-MAE4190/blog/second/</guid>
+          <description xml:base="https://ajd323.github.io/Fast-Robots-MAE4190/blog/second/">&lt;h2 id=&quot;objectives&quot;&gt;Objectives&lt;&#x2F;h2&gt;
+</description>
+      </item>
+      <item>
+          <title>Lab 1: Artemis and BLE</title>
+          <pubDate>Tue, 03 Feb 2026 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://ajd323.github.io/Fast-Robots-MAE4190/blog/first/</link>
+          <guid>https://ajd323.github.io/Fast-Robots-MAE4190/blog/first/</guid>
+          <description xml:base="https://ajd323.github.io/Fast-Robots-MAE4190/blog/first/">&lt;h2 id=&quot;objectives&quot;&gt;Objectives&lt;&#x2F;h2&gt;
+</description>
+      </item>
+    </channel>
+</rss>
