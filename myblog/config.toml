@@ -1,7 +1,12 @@
 # Tanuki Theme - Example
 base_url = "https://ajd323.github.io/Fast-Robots-MAE4190/"
-title = "Andrew D'Onofrio Fast Robots Portfolio"
-description = "A compilation of labs from MAE 4190: Fast Robots class created by Andrew D'Onofrio"
+title = "Andrew DOnofrio Fast Robots Portfolio"
+description = """
+A compilation of labs from MAE 4190: Fast Robots, created by Andrew DOnofrio.
+Hello, my name is Andrew DOnofrio — welcome to my portfolio for MAE 4190: Fast Robots!
+Please read through for projects relating to in-depth documentation on mechatronics and complex systems.
+"""
+
 theme = "tanuki"
 compile_sass = true
 build_search_index = true
@@ -19,21 +24,21 @@ smart_punctuation = true
 [extra]
 mode = "docs"
 show_theme_toggle = true
-show_about_section = false
+# show_about_section = false
 
 # Author info
 [extra.author]
-name = "Andrew D'Onofrio"
+name = "Andrew DOnofrio"
 bio = "Senior Mechanical Engineering Student (B.S. '26)"
 
 # Hero section
-[extra.hero]
-title = "Fast Robots by Andrew D'Onofrio"
-subtitle = "MAE4190 Student Portfolio Page"
+# [extra.hero]
+# title = "Fast Robots by Andrew DOnofrio"
+# subtitle = "MAE4190 Student Portfolio Page"
 
 # About preview on homepage
-[extra.about]
-summary = "Documentation and insights from MAE 4190 - Fast Robots course."
+# [extra.about]
+# summary = "Documentation and insights from MAE 4190 - Fast Robots course."
 
 # Social links
 [extra.social]
@@ -47,3 +52,7 @@ url = "/"
 [[extra.nav]]
 name = "Labs"
 url = "/blog/"
+
+[[extra.nav]]
+name = "About"
+url = "/articles/"
