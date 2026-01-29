@@ -1,12 +1,32 @@
 +++
-title = "Labs"
+title = "About"
 sort_by = "title"
-template = "blog.html"
 page_template = "page.html"
 +++
 
-# About
 
-Hellow
+<img src="/img/Headshot.JPG"
+alt="Profile Picture"
+class="profile-image"
+style="max-width:250px; border-radius:12px; float:left; margin:0 20px 10px 0;" />
 
-<img src="/img/Headshot.JPG" alt="Headshot" style="max-width:250px; border-radius:12px; margin: 16px 0;" />
+<p>
+Hello, my name is Andrew D’Onofrio, welcome to my page!
+<p>
+
+<p>
+I am a senior mechanical engineering student at Cornell University in the College of Engineering, concentrated in biotechnolgoy I am currently exploring my interests in electromechanical design and mechanical therapies for biologic systems.
+</p>
+
+<p>
+This site documents my work for MAE4190 Fast Robots, including lab reports, projects, and experiments involving sensing, control, and actuation. I'm excited to learn more about integrating control systems with Pyton and Juypter notebook into continous mechatronics. 
+</p>
+
+# Fast Robots Class Overview
+
+Welcome to the Fast Robots documentation site. This project covers real-time autonomous robotics and embedded systems. ## Course Overview MAE 4190 - Fast Robots is a hands-on course focused on:
+- **Embedded Systems**: Microcontroller programming and real-time control
+- **Robotics**: Motor control, sensor integration, and navigation
+- **Autonomous Systems**: Path planning, obstacle avoidance, and feedback control
+- **Real-Time Systems**: Timing constraints and efficient algorithms
+
