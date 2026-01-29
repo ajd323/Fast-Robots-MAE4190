@@ -24,7 +24,7 @@ This site documents my work for MAE4190 Fast Robots, including lab reports, proj
 
 # Fast Robots Class Overview
 
-Welcome to the Fast Robots documentation site. This project covers real-time autonomous robotics and embedded systems. ## Course Overview MAE 4190 - Fast Robots is a hands-on course focused on:
+Fast Robots is a hands-on course that covers major topics in mechatronics and design:
 - **Embedded Systems**: Microcontroller programming and real-time control
 - **Robotics**: Motor control, sensor integration, and navigation
 - **Autonomous Systems**: Path planning, obstacle avoidance, and feedback control
