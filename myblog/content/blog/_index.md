@@ -1,7 +1,10 @@
 +++
 title = "Labs"
-sort_by = "date"
+sort_by = "title"
+template = "blog.html"
 page_template = "page.html"
 +++
 
-Welcome to the Labs section. Lab reports and project updates will appear here.
+# Fast Robots Labs
+
+Browse through all completed lab assignments below:
