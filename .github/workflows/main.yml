@@ -2,7 +2,8 @@ name: Build and deploy Zola website
 on:
   push:
     branches:
-      - master
+      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -26,6 +27,7 @@ jobs:
         uses: getzola/github-pages@066755243e69f508fd1a74739fbf1a65f656c790
         with:
           zola_version: v0.22.0
+          working_directory: myblog
 
   deploy:
     runs-on: ubuntu-latest
