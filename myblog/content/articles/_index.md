@@ -4,7 +4,7 @@ sort_by = "title"
 page_template = "page.html"
 +++
 
-<img src="/Fast-Robots-MAE4190/img/Headshot.JPG" alt="Profile photo" style="max-width:250px; border-radius:12px; float:left; margin:0 20px 10px 0;" />
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Headshot.JPG" alt="Profile photo" style="max-width:250px; border-radius:12px; float:left; margin:0 20px 10px 0;" />
 
 <p>
 Hello, my name is Andrew D’Onofrio, welcome to my page!
