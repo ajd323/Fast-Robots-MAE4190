@@ -46,12 +46,12 @@ github = "https://github.com/ajd323"
 # Navigation
 [[extra.nav]]
 name = "Home"
-url = "./"
+url = "https://ajd323.github.io/Fast-Robots-MAE4190/"
 
 [[extra.nav]]
 name = "Labs"
-url = "blog/"
+url = "https://ajd323.github.io/Fast-Robots-MAE4190/blog/"
 
 [[extra.nav]]
 name = "About"
-url = "articles/"
+url = "https://ajd323.github.io/Fast-Robots-MAE4190/articles/"
