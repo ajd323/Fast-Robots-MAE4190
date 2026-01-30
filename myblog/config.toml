@@ -35,10 +35,6 @@ bio = "Senior Mechanical Engineering Student (B.S. '26)"
 # title = "Fast Robots by Andrew DOnofrio"
 # subtitle = "MAE4190 Student Portfolio Page"
 
-# About preview on homepage
-# [extra.about]
-# summary = "Documentation and insights from MAE 4190 - Fast Robots course."
-
 # Social links
 [extra.social]
 github = "https://github.com/ajd323"
