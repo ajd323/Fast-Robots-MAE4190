@@ -1,9 +1,8 @@
-<!--+++
++++
 title = "About"
 sort_by = "title"
 page_template = "page.html"
-+++ -->
-
++++
 
 <img src="/img/Headshot.JPG"
 alt="Profile Picture"
