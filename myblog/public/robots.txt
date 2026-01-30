@@ -1,4 +1,0 @@
-User-agent: *
-Disallow:
-Allow: /
-Sitemap: https://ajd323.github.io/Fast-Robots-MAE4190/sitemap.xml
