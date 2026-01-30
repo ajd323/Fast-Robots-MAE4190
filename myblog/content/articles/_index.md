@@ -4,7 +4,7 @@ sort_by = "title"
 page_template = "page.html"
 +++
 
-<img src="/img/Headshot.JPG"
+<img src="/Fast-Robots-MAE4190/img/Headshot.JPG"
 alt="Profile Picture"
 class="profile-image"
 style="max-width:250px; border-radius:12px; float:left; margin:0 20px 10px 0;" />
