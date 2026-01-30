@@ -6,7 +6,7 @@ Hello, my name is Andrew DOnofrio — welcome to my portfolio for MAE 4190: Fast
 Please read through for projects relating to in-depth documentation on mechatronics and complex systems, and see my about page to learn more about me!
 """
 
-theme = "tanuki"
+# theme = "tanuki"
 compile_sass = true
 build_search_index = true
 generate_feeds = true
