@@ -23,7 +23,7 @@ smart_punctuation = true
 [extra]
 mode = "docs"
 show_theme_toggle = true
-# show_about_section = false
+show_about_section = false
 
 # Author info
 [extra.author]
