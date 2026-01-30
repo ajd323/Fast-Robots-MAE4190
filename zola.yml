@@ -31,16 +31,16 @@ jobs:
           tool: zola@0.19.2
 
       - name: Build
-        run: zola build
+        run: cd myblog && zola build
 
       # Crucial step to prevent Jekyll processing which causes 404s
       - name: Disable Jekyll
-        run: touch public/.nojekyll
+        run: touch myblog/public/.nojekyll
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./public
+          path: ./myblog/public
 
   deploy:
     environment:
