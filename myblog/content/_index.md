@@ -4,4 +4,4 @@ template = "home.html"
 page_template = "page.html"
 +++
 
-<img src="/img/Headshot.JPG" style="max-width:250px; border-radius:12px; margin:16px 0;" />
+<img src="/static/img/Headshot.JPG" style="max-width:250px; border-radius:12px; margin:16px 0;" />
