@@ -17,6 +17,8 @@ Lab #1 is a basic introduction of the Artemis Nano board and interacting with th
 ### Outcomes
 Multiple tests were conducted to verify the Artemis Nano board is operating as expected, as shown in the videos below:
 
+**Info:** Test Function #1
+
 ```cpp
 case SEND_THREE_FLOATS:
     float three_float_array[3];
