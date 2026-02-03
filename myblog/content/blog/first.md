@@ -17,7 +17,7 @@ Lab #1 is a basic introduction of the Artemis Nano board and interacting with th
 ### Outcomes
 Multiple tests were conducted to verify the Artemis Nano board is operating as expected, as shown in the videos below:
 
-{% code(lang="cpp") %}
+```cpp
 case SEND_THREE_FLOATS:
     float three_float_array[3];
 
@@ -34,7 +34,7 @@ case SEND_THREE_FLOATS:
     Serial.print(three_float_array[1]);
     Serial.print(", ");
     Serial.println(three_float_array[2]);
-{% endcode %}
+```
 
 ## Lab 1B
 
