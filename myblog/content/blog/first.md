@@ -17,7 +17,9 @@ Lab #1 is a basic introduction of the Artemis Nano board and interacting with th
 ### Outcomes
 Multiple tests were conducted to verify the Artemis Nano board is operating as expected, as shown in the videos below:
 
-**Info:** Test Function #1
+
+ > **Info:** Test
+
 
 ## Lab 1B
 
@@ -27,6 +29,10 @@ Prior to beginning the next lab, additional steps were completed to create the v
 Now that the BLE environment has been initialized, the codebase creates a two-way wireless Bluetooth Low Energy (BLE) communication channel designed for low power devices. BLE operates with a central-peripheral system, where the peripheral (i.e. the Artemis Nano board) advertises itself to the central (i.e. Main Computer) and provides structured information as services and characteristics. Each piece of information has a unique UUID which enables the computer to read and write characteristics, in addition to subscribing for updates. With this, a publish-subscribe system is accessible for wireless controlling the Artemis Nano and receiving sensor data through Bluetooth.
 
 ### Outcomes
+
+
+
+
 
 ### Relevant Arduino Code Snippets
 
