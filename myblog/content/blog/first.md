@@ -17,8 +17,14 @@ Lab #1 is a basic introduction of the Artemis Nano board and interacting with th
 ### Outcomes
 Multiple tests were conducted to verify the Artemis Nano board is operating as expected, as shown in the videos below:
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test #1 - Blink:** “Blink” demonstrates the board’s ability to control an on-board LED with HIGH and LOW controls
 
-&nbsp;&nbsp;&nbsp;&nbsp; **Info:** Test
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test #2 - Serial:** “Serial” demonstrates the board’s ability to communicate through the Serial Monitor and echo back commands types through the computer
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test #3 - AnalogRead:** “AnalogRead” demonstrates the board’s ability to read from the die temperature sensor on the Apollo3 microcontroller
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Test #4 - Microphone Output:** “Microphone Output” demonstrates the board’s ability to recognize external frequencies with the built-in microphone, and print out the loudest frequency on the Serial Monitor. During the video, I am trying to whistle an F# (~1480 Hz)
+
 
 
 ## Lab 1B
@@ -30,9 +36,19 @@ Now that the BLE environment has been initialized, the codebase creates a two-wa
 
 ### Outcomes
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Function #1 - ECHO:** Jupyter Notebook sends a command through the “Echo()” function that includes “Passed the Test!”, and prints out "Robot Confirm: Passed the Test!” in the Serial Monitor.
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Function #2 - SEND_THREE_FLOATS:** Jupyter Notebook sends a command through the “Send_Three_Floats()” function to read out three values ("32 | 4.16 | -157") and outputs the reformatted results into the Serial Monitor as “Three Float Test: 32.00, 4.16, -157.00.”
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Function #3 - GET_TIME_MILLIS:**  Jupyter Notebook sends a command through the “GET_TIME_MILLIS()” function that calls for the time recorded on the Artemis clock and prints the “T: Timestamp” in the Serial Monitor.
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Function #4 - NOTIF_CALL:** In Jupyter Notebook, the function “Notif_Call” is created to obtain and print the timestamp for accessing the specific microcontroller with the commands. Compiling is done to confirm no Python-based errors, none of which were flagged.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Function #5 - MESSAGE_SPEED:** In Jupyter Notebook, use the “Notif_Call” function in combination with “start_notify” function to create a finite list of timestamps dictated by “Message_Speed()” function on the Artemis board. Over ten seconds, the Artemis board sends notifications unconstrained and computes the average data transfer rate and prints in the Jupyter Notebook terminal. From testing different variations, the highest effective data transfer rate was capped around 100 messages per second, where anything beyond this point would cause crashing for the system. I would recommend that for future use, a buffer should be added to prevent exceeding this limit and continue smooth operation.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Function #6 - SEND_TIME_DATA:**  Jupyter Notebook sends a command through the “Send_Time_Data()” function that calls the Artemis board to store a set amount of data and stream the information back to the Jupyter Notebook terminal.
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; **Function #7 - GET_TEMP_READINGS:** Jupyter Notebook sends a command through the “GET_TEMP_READING()” function that compiles the timestamp and datapoint for temperature through the die temperature sensor on the Artemis board, sends the information to Jupyter Notebook, and recompiles the information for printing on the Jupyter Notebook terminal.
 
 ### Relevant Arduino Code Snippets
 
