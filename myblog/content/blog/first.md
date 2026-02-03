@@ -14,6 +14,8 @@ Lab #1 is a basic introduction of the Artemis Nano board and interacting with th
 ### Configurations
  Prior to beginning, some steps were required to configure my computer for communicating with the Artemis board. This included installing the Artemis library for the preinstalled ArduinoIDE, downloading the CH340 Driver, and configuring particular settings for the bootloader. After completing this, the ArduinoIDE could recognize and burn scripts.
 
+ <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_1.JPG" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+
 ### Outcomes
 Multiple tests were conducted to verify the Artemis Nano board is operating as expected, as shown in the videos below:
 
