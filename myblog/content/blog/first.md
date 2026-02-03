@@ -18,7 +18,7 @@ Lab #1 is a basic introduction of the Artemis Nano board and interacting with th
 Multiple tests were conducted to verify the Artemis Nano board is operating as expected, as shown in the videos below:
 
 
-      **Info:** Test
+&nbsp;&nbsp;&nbsp;&nbsp; **Info:** Test
 
 
 ## Lab 1B
