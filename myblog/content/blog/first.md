@@ -21,19 +21,19 @@ Multiple tests were conducted to verify the Artemis Nano board is operating as e
 
 - **Test #1 - Blink:** “Blink” demonstrates the board’s ability to control an on-board LED with HIGH and LOW controls
 
-[![Blink Video](https://img.youtube.com/vi/6LeNtARszeY)
+[![Blink Video](https://img.youtube.com/vi/6LeNtARszeY)]
 
 - **Test #2 - Serial:** “Serial” demonstrates the board’s ability to communicate through the Serial Monitor and echo back commands types through the computer
 
-[![Serial Video](https://img.youtube.com/vi/GlpBzaUGYLM)
+[![Serial Video](https://img.youtube.com/vi/GlpBzaUGYLM)]
 
 - **Test #3 - AnalogRead:** “AnalogRead” demonstrates the board’s ability to read from the die temperature sensor on the Apollo3 microcontroller
 
-[![AnalogRead Video](https://img.youtube.com/vi/sMc9IGHLB9c)
+[![AnalogRead Video](https://img.youtube.com/vi/sMc9IGHLB9c)]
 
 - **Test #4 - Microphone Output:** “Microphone Output” demonstrates the board’s ability to recognize external frequencies with the built-in microphone, and print out the loudest frequency on the Serial Monitor. During the video, I am trying to whistle an F# (~1480 Hz)
 
-[![Microphone Video](https://img.youtube.com/vi/T3nTh4XLpB4)
+[![Microphone Video](https://img.youtube.com/vi/T3nTh4XLpB4)]
 
 ## Lab 1B
 
