@@ -43,27 +43,27 @@ Now that the BLE environment has been initialized, the codebase creates a two-wa
 
 - **Function #1 - ECHO:** Jupyter Notebook sends a command through the “Echo()” function that includes “Passed the Test!”, and prints out "Robot Confirm: Passed the Test!” in the Serial Monitor.
 
- <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_3.JPG" alt="Lab_1_3" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+ <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_3.png" alt="Lab_1_3" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
 
 - **Function #2 - SEND_THREE_FLOATS:** Jupyter Notebook sends a command through the “Send_Three_Floats()” function to read out three values ("32 | 4.16 | -157") and outputs the reformatted results into the Serial Monitor as “Three Float Test: 32.00, 4.16, -157.00.”
 
- <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_4.JPG" alt="Lab_1_4" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+ <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_4.png" alt="Lab_1_4" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
 
 - **Function #3 - GET_TIME_MILLIS:**  Jupyter Notebook sends a command through the “GET_TIME_MILLIS()” function that calls for the time recorded on the Artemis clock and prints the “T: Timestamp” in the Serial Monitor.
 
- <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_5.JPG" alt="Lab_1_5" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+ <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_5.png" alt="Lab_1_5" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
 
 - **Function #4 - NOTIF_CALL:** In Jupyter Notebook, the function “Notif_Call” is created to obtain and print the timestamp for accessing the specific microcontroller with the commands. Compiling is done to confirm no Python-based errors, none of which were flagged.
 
- <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_6.JPG" alt="Lab_1_6" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+ <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_6.png" alt="Lab_1_6" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
 
 - **Function #5 - MESSAGE_SPEED:** In Jupyter Notebook, use the “Notif_Call” function in combination with “start_notify” function to create a finite list of timestamps dictated by “Message_Speed()” function on the Artemis board. Over ten seconds, the Artemis board sends notifications unconstrained and computes the average data transfer rate and prints in the Jupyter Notebook terminal. From testing different variations, the highest effective data transfer rate was capped around 100 messages per second, where anything beyond this point would cause crashing for the system. I would recommend that for future use, a buffer should be added to prevent exceeding this limit and continue smooth operation.
 
- <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_7.JPG" alt="Lab_1_7" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+ <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_7.png" alt="Lab_1_7" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
 
 - **Function #6 - SEND_TIME_DATA:**  Jupyter Notebook sends a command through the “Send_Time_Data()” function that calls the Artemis board to store a set amount of data and stream the information back to the Jupyter Notebook terminal.
 
- <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_8.JPG" alt="Lab_1_8" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+ <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_8.png" alt="Lab_1_8" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
 
 - **Function #7 - GET_TEMP_READINGS:** Jupyter Notebook sends a command through the “GET_TEMP_READING()” function that compiles the timestamp and datapoint for temperature through the die temperature sensor on the Artemis board, sends the information to Jupyter Notebook, and recompiles the information for printing on the Jupyter Notebook terminal.
 
