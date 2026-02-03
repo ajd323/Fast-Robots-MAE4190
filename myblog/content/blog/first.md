@@ -14,23 +14,20 @@ Lab #1 is a basic introduction of the Artemis Nano board and interacting with th
 ### Configurations
  Prior to beginning, some steps were required to configure my computer for communicating with the Artemis board. This included installing the Artemis library for the preinstalled ArduinoIDE, downloading the CH340 Driver, and configuring particular settings for the bootloader. After completing this, the ArduinoIDE could recognize and burn scripts.
 
- <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_1.JPG" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+ <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_1.png" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
 
 ### Outcomes
 Multiple tests were conducted to verify the Artemis Nano board is operating as expected, as shown in the videos below:
 
 - **Test #1 - Blink:** “Blink” demonstrates the board’s ability to control an on-board LED with HIGH and LOW controls
 
- <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_1.JPG" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/6LeNtARszeY]
 
 - **Test #2 - Serial:** “Serial” demonstrates the board’s ability to communicate through the Serial Monitor and echo back commands types through the computer
-
 
 - **Test #3 - AnalogRead:** “AnalogRead” demonstrates the board’s ability to read from the die temperature sensor on the Apollo3 microcontroller
 
 - **Test #4 - Microphone Output:** “Microphone Output” demonstrates the board’s ability to recognize external frequencies with the built-in microphone, and print out the loudest frequency on the Serial Monitor. During the video, I am trying to whistle an F# (~1480 Hz)
-
-
 
 ## Lab 1B
 
@@ -43,29 +40,31 @@ Now that the BLE environment has been initialized, the codebase creates a two-wa
 
 - **Function #1 - ECHO:** Jupyter Notebook sends a command through the “Echo()” function that includes “Passed the Test!”, and prints out "Robot Confirm: Passed the Test!” in the Serial Monitor.
 
- <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_3.png" alt="Lab_1_3" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+ <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_2.png" alt="Lab_1_3" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
 
 - **Function #2 - SEND_THREE_FLOATS:** Jupyter Notebook sends a command through the “Send_Three_Floats()” function to read out three values ("32 | 4.16 | -157") and outputs the reformatted results into the Serial Monitor as “Three Float Test: 32.00, 4.16, -157.00.”
 
- <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_4.png" alt="Lab_1_4" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+ <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_3.png" alt="Lab_1_4" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
 
 - **Function #3 - GET_TIME_MILLIS:**  Jupyter Notebook sends a command through the “GET_TIME_MILLIS()” function that calls for the time recorded on the Artemis clock and prints the “T: Timestamp” in the Serial Monitor.
 
- <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_5.png" alt="Lab_1_5" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+ <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_4.png" alt="Lab_1_5" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
 
 - **Function #4 - NOTIF_CALL:** In Jupyter Notebook, the function “Notif_Call” is created to obtain and print the timestamp for accessing the specific microcontroller with the commands. Compiling is done to confirm no Python-based errors, none of which were flagged.
 
- <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_6.png" alt="Lab_1_6" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+ <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_5.png" alt="Lab_1_6" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
 
 - **Function #5 - MESSAGE_SPEED:** In Jupyter Notebook, use the “Notif_Call” function in combination with “start_notify” function to create a finite list of timestamps dictated by “Message_Speed()” function on the Artemis board. Over ten seconds, the Artemis board sends notifications unconstrained and computes the average data transfer rate and prints in the Jupyter Notebook terminal. From testing different variations, the highest effective data transfer rate was capped around 100 messages per second, where anything beyond this point would cause crashing for the system. I would recommend that for future use, a buffer should be added to prevent exceeding this limit and continue smooth operation.
 
- <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_7.png" alt="Lab_1_7" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+ <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_6.png" alt="Lab_1_7" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
 
 - **Function #6 - SEND_TIME_DATA:**  Jupyter Notebook sends a command through the “Send_Time_Data()” function that calls the Artemis board to store a set amount of data and stream the information back to the Jupyter Notebook terminal.
 
- <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_8.png" alt="Lab_1_8" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+ <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_7.png" alt="Lab_1_8" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
 
 - **Function #7 - GET_TEMP_READINGS:** Jupyter Notebook sends a command through the “GET_TEMP_READING()” function that compiles the timestamp and datapoint for temperature through the die temperature sensor on the Artemis board, sends the information to Jupyter Notebook, and recompiles the information for printing on the Jupyter Notebook terminal.
+
+ <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/Lab_1_8.png" alt="Lab_1_8" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
 
 ### Relevant Arduino Code Snippets
 
