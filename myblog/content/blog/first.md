@@ -19,25 +19,6 @@ Multiple tests were conducted to verify the Artemis Nano board is operating as e
 
 **Info:** Test Function #1
 
-```cpp
-case SEND_THREE_FLOATS:
-    float three_float_array[3];
-
-    for (int i = 0; i < 3; i++) {
-        success = robot_cmd.get_next_value(three_float_array[i]);
-        if (!success) {
-            return;
-        }
-    }
-
-    Serial.print("Three Float Test: ");
-    Serial.print(three_float_array[0]);
-    Serial.print(", ");
-    Serial.print(three_float_array[1]);
-    Serial.print(", ");
-    Serial.println(three_float_array[2]);
-```
-
 ## Lab 1B
 
 ### Configurations
@@ -46,6 +27,109 @@ Prior to beginning the next lab, additional steps were completed to create the v
 Now that the BLE environment has been initialized, the codebase creates a two-way wireless Bluetooth Low Energy (BLE) communication channel designed for low power devices. BLE operates with a central-peripheral system, where the peripheral (i.e. the Artemis Nano board) advertises itself to the central (i.e. Main Computer) and provides structured information as services and characteristics. Each piece of information has a unique UUID which enables the computer to read and write characteristics, in addition to subscribing for updates. With this, a publish-subscribe system is accessible for wireless controlling the Artemis Nano and receiving sensor data through Bluetooth.
 
 ### Outcomes
+
+### Relevant Arduino Code Snippets
+
+```cpp
+enum CommandTypes
+{
+    ...
+    MESSAGE_SPEED,
+    SEND_TIME_DATA,
+    GET_TEMP_READINGS,
+};
+```
+```cpp
+case SEND_THREE_FLOATS:
+    float three_float_array[3];
+    for (int i = 0; i < 3; i++) {
+        success = robot_cmd.get_next_value(three_float_array[i]);
+        if (!success) {
+            return;
+        }
+    }
+    Serial.print("Three Float Test: ");
+    Serial.print(three_float_array[0]);
+    Serial.print(", ");
+    Serial.print(three_float_array[1]);
+    Serial.print(", ");
+    Serial.println(three_float_array[2]);
+```
+```cpp
+case GET_TIME_MILLIS:
+    tx_estring_value.clear();
+    tx_estring_value.append((float) millis());
+    tx_characteristic_string.writeValue(tx_estring_value.c_str());
+    Serial.print("T: ");
+    Serial.println(tx_estring_value.c_str());
+    break;
+```
+```cpp
+case MESSAGE_SPEED:{
+    // Find the average over 10 seconds
+    unsigned long init_time = millis();
+    int sample_time = 10000; // Units (ms)
+    while(10000 > millis() - init_time){
+        tx_estring_value.clear();
+        tx_estring_value.append((float) millis());
+        tx_characteristic_string.writeValue(tx_estring_value.c_str());
+    }
+    break; }
+```
+```cpp
+case SEND_TIME_DATA:{
+    // 2) Record timestamps
+    for (int i = 0; i < time_package_size; i++){
+        timestamp_array[i] = (float) millis();
+    }
+            
+    // 3) Communicate array to Jupyter Notebook
+    for (int i = 0; i < time_package_size; i++){
+        tx_estring_value.clear();
+        tx_estring_value.append((float) timestamp_array[i]);
+        tx_characteristic_string.writeValue(tx_estring_value.c_str());
+    }
+    break; }
+```
+
+```cpp
+case GET_TEMP_READINGS:{
+    unsigned long init_time = millis();
+    for (int i = 0; i < time_package_size; i++){
+        timestamp_array[i] = (float) millis();
+        temperature_array[i] = (float) getTempDegF();
+    }
+    for (int i = 0; i < time_package_size; i++){
+        tx_estring_value.clear();
+        tx_estring_value.append("Time (ms): ");
+        tx_estring_value.append((float) timestamp_array[i]);
+        tx_estring_value.append(", Time (ms): ");
+        tx_estring_value.append((float) temperature_array[i]);
+        tx_characteristic_string.writeValue(tx_estring_value.c_str());
+    }
+    break; }
+```
+
+### Relevant Python Code Snippets
+
+```cpp
+...
+ble.send_command(CMD.ECHO, "Passed the Test!")
+ble.send_command(CMD.SEND_THREE_FLOATS, "32|4.16|-157")
+ble.send_command(CMD.GET_TIME_MILLIS, "")
+ble.start_notify(ble.uuid["RX_STRING"], notif_call)
+ble.send_command(CMD.MESSAGE_SPEED,"")
+ble.start_notify(ble.uuid["RX_STRING"], notif_call)
+ble.send_command(CMD.SEND_TIME_DATA,"")
+timestamp_list = []
+temperature_list = []
+def notif_call_temp(UUID, Notif_Array): 
+    input_data = ble.bytearray_to_string(Notif_Array)
+    processed_data = input_data.split(", ")
+    timestamp_list.append(processed_data[0])
+    temperature_list.append(processed_data[1])
+    print(f"{processed_data[0]}, {processed_data[1]}")
+```
 
 ## Discussion
 
