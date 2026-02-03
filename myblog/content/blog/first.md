@@ -21,7 +21,7 @@ Multiple tests were conducted to verify the Artemis Nano board is operating as e
 
 - **Test #1 - Blink:** “Blink” demonstrates the board’s ability to control an on-board LED with HIGH and LOW controls
 
-[![Blink Video](https://img.youtube.com/vi/6LeNtARszeY)]
+<iframe width="560" height="315" src="https://www.youtube.com/embed/6LeNtARszeY" title="Blink Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 - **Test #2 - Serial:** “Serial” demonstrates the board’s ability to communicate through the Serial Monitor and echo back commands types through the computer
 
