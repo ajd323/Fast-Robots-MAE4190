@@ -13,6 +13,8 @@ Lab #2 initializes the SparkFun 9DOF IMU, specifically the accelerometer and gyr
 
 The Redboard Artemis Nano is connected to the SparkFun 9DOF IMU Breakout Board with a QWIIC connector and powered through the USB-C connection. For this lab, both USB direct wire connection and bluetooth are completed workflows for displaying outputs from the IMU set-up, and photos will vary based on the post-processing requirements. For quick affirmation, output from the Serial Monitor is provided, but otherwise, BLE in Jupyter Notebook is provided.
 
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab2_1.png" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+
 ### AD0_VAL Application
 
 AV0_VAL selects the I2C address for the connected IMU board, since IMU-20948 has two possible I2C addresses (0x68 and 0x69). For the functions in the provided Sparkfun Arduino file, the I2C address is controlled by the ADR jumper being open (1) or closed (0) which is indicated in the AD0_VAL variable.
