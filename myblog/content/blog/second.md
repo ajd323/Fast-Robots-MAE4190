@@ -1,5 +1,5 @@
 +++
-title = "Lab 2: IMUs "
+title = "Lab 2: IMUs"
 date = 2026-02-10
 description = ""
 taxonomies = { tags = ["IMUs",  "FFT", "Low-Pass Filtering", "Accelerometer", "Gyroscope"] }
@@ -22,6 +22,14 @@ The sensors record the acceleration, gyroscope, magnetometer, of pitch, roll, ya
 ## Lab #2 Outcomes
 
 ### Accelerometer (Pitch and Roll from -90, 0, 90)
+
+**Pitch Data**
+
+<iframe width="560" height="315" src="https://youtube.com/shorts/jaQQVk0lff0" title="Pitch Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+**Roll Data**
+
+<iframe width="560" height="315" src="https://youtube.com/shorts/Dkw2VtJbXNM" title="Roll Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 - **Accuracy:** While the accelerometer has high-accuracy, the precision is lower considering the high-frequency noise propagating in the time-dependent graph. For both pitch and roll, there are spikes in the even motion occurring, indicating high-sensitivity in the sensors that picks up high-frequency, low-amplitude signals.
 - **Low-Pass Filtering with FFT:** The following is a side-by-side of the pre-processed time-dependent motion graphs from the accelerometer, a fast fourier transform (FFT) of the pre-processed data, and the post-processed data with the low-filter applied in Python. As shown below and from the previous section, the raw accelerometer data is especially noisy. A digital low-pass filter is implemented in order to remove unnecessarily detailed artifacts recorded during data collection and smooth the dataset. With high-amplitude signals up to around 3 Hz, I implemented a 5 Hz low-pass filter. Disregarding the DC-offset demonstrated in the dataset, the ~3 dB point below the maximum amplitude is at about 3-4 Hz, and with 5 Hz indicating a smoothing factor of alpha = 0.072, 5 Hz proves a sound cut-off frequency.
@@ -64,3 +72,7 @@ Here is a video demonstrating the Artemis arrays transmitted via bluetooth and p
 Here is a video of a stunt done with the car:
 
 The stunt car responds efficiently to inputs from the controller, accelerates suddenly, and handles dynamically. Unlike standard RC Cars, the stunt car is able to perform tank spins (360-degree spins) since the left and right tires are independently powered. This additionally contributes to the tight turning and aggressive response to input parameters from the controllers. Although normal cars would be impacted by the reduced torque and handling, these attributes are outside our scope and are effective tradeoffs.
+
+## Discussion
+
+Overall, Lab #2 provided the opporutnity to establish a useful conneciton between the peripheral sensors and the BLE environrmnet. This will be the building blocks for future labs and creating the infrastructure for large-scale data processing in Python and C++.
