@@ -67,9 +67,13 @@ There are numerous considerations for these arrays, specifically regarding the n
 
 Here is a video demonstrating the Artemis arrays transmitted via bluetooth and printed in Jupyter Notebook for ~11 seconds of data:
 
+<iframe width="560" height="315" src="https://youtube.com/shorts/cQkWuC1fQkk" title="Streaming Data Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 ### Record a Stunt
 
 Here is a video of a stunt done with the car:
+
+<iframe width="560" height="315" src="https://youtube.com/shorts/hyX1n06Ktps" title="Streaming Data Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 The stunt car responds efficiently to inputs from the controller, accelerates suddenly, and handles dynamically. Unlike standard RC Cars, the stunt car is able to perform tank spins (360-degree spins) since the left and right tires are independently powered. This additionally contributes to the tight turning and aggressive response to input parameters from the controllers. Although normal cars would be impacted by the reduced torque and handling, these attributes are outside our scope and are effective tradeoffs.
 
