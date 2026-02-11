@@ -27,7 +27,7 @@ The sensors record the acceleration, gyroscope, magnetometer, of pitch, roll, ya
 
 **Pitch Data**
 
-<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab2_2.png" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab2_2.png" alt="Lab_1_1" style="max-width:250px; border-radihttps://ajd323.github.io/Fast-Robots-MAE4190/blog/first/us:12px; margin:0 20px 10px 0;" />
 
 <iframe width="560" height="315" src="https://youtube.com/shorts/jaQQVk0lff0" title="Pitch Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -55,6 +55,109 @@ The sensors record the acceleration, gyroscope, magnetometer, of pitch, roll, ya
 Here is an additional analysis of the low-pass filter with vibrational noise generated from bashing the IMU sensor against the table. As seen, the vibrational artifacts are not preserved with this cut-off frequency.
 
 <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab2_7.png" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+
+**Relevant Code Structure**
+
+```cpp
+void accelerometerIMUs(ICM_20948_I2C *sensor) {
+  // Assigning Acceleration Values
+  float accX_est = sensor->accX() / 1000.0;
+  float accY_est = sensor->accY() / 1000.0;
+  float accZ_est = sensor->accZ() / 1000.0;
+
+  // Estiamted Roll and Pitch
+  // Radians
+  float accel_roll = atan2(accY_est, accZ_est);
+  float accel_pitch = atan2(-accX_est, sqrt(accY_est*accY_est + accZ_est*accZ_est));
+  // Degrees
+  accel_roll = accel_roll * 180.0 / M_PI;
+  accel_pitch = accel_pitch * 180.0 / M_PI;
+  // Output
+  SERIAL_PORT.print(" Pitch (deg): ");
+  SERIAL_PORT.print(accel_pitch, 2);
+  SERIAL_PORT.print(",");
+  SERIAL_PORT.print(" Roll (deg): ");
+  SERIAL_PORT.println(accel_roll, 2);
+  delay(100);
+}
+
+void gyroscopeIMUs(ICM_20948_I2C *sensor) {
+  unsigned long now = millis();
+
+  if (last_time == 0) {
+    last_time = now;
+    return;
+  }
+
+  float dt = (now - last_time) / 1000.0;
+  last_time = now;
+
+  float gyrX_est = sensor->gyrX();
+  float gyrY_est = sensor->gyrY();
+  float gyrZ_est = sensor->gyrZ();
+
+  gyro_roll  += gyrX_est * dt;
+  gyro_pitch += gyrY_est * dt;
+  gyro_yaw   += gyrZ_est * dt;
+  SERIAL_PORT.print("Pitch (deg): ");
+  SERIAL_PORT.print(gyro_pitch, 2);
+  SERIAL_PORT.print(",");
+  SERIAL_PORT.print(" Roll (deg): ");
+  SERIAL_PORT.print(",");
+  SERIAL_PORT.print(gyro_roll, 2);
+  SERIAL_PORT.print(" Yaw (deg): ");
+  SERIAL_PORT.println(gyro_yaw, 2);
+}
+```
+```cpp
+case GET_ALL_IMU_READINGS: {
+        unsigned long init_time = millis();
+        float alpha = 0.8; // Complementary filter coefficient
+        for (int i = 0; i < time_package_size; i++) {
+          unsigned long now = millis();
+          if (myICM.dataReady()) {
+              myICM.getAGMT();
+          }
+          // --- Accelerometer angles ---
+          float accX = myICM.accX() / 1000.0;
+          float accY = myICM.accY() / 1000.0;
+          float accZ = myICM.accZ() / 1000.0;
+          float roll_acc  = atan2(accY, accZ) * 180.0 / M_PI;
+          float pitch_acc = atan2(-accX, sqrt(accY*accY + accZ*accZ)) * 180.0 / M_PI;
+
+          // --- Gyroscope integration ---
+          static unsigned long last_time_local = 0; // inside loop, static to keep value
+          float dt;
+          if (last_time_local == 0) {
+              dt = 0.0;
+          } else {
+              dt = (now - last_time_local) / 1000.0;
+          }
+          last_time_local = now;
+          float gyrX_est = myICM.gyrX();
+          float gyrY_est = myICM.gyrY();
+          float gyrZ_est = myICM.gyrZ();
+          // Integrate gyro
+          if (i == 0) {
+            est_gyro_roll[i] = gyrX_est * dt;
+            est_gyro_pitch[i] = gyrY_est * dt;
+            est_gyro_yaw[i] = gyrZ_est * dt;
+          } else {
+            est_gyro_roll[i] = est_gyro_roll[i-1] + gyrX_est * dt;
+            est_gyro_pitch[i] = est_gyro_pitch[i-1] + gyrY_est * dt;
+            est_gyro_yaw[i] = est_gyro_yaw[i-1] + gyrZ_est * dt;
+          }
+          // Complementary Filter
+          est_gyro_roll[i]  = (est_gyro_roll[i]  * (1 - alpha)) + (roll_acc  * alpha);
+          est_gyro_pitch[i] = (est_gyro_pitch[i] * (1 - alpha)) + (pitch_acc * alpha);
+
+          // Store timestamps and raw accelerometer angles
+          timestamp_array[i] = (float)(millis() - init_time);
+          estimated_roll[i]  = roll_acc;
+          estimated_pitch[i] = pitch_acc;
+        }
+        ...
+```
 
 ### Gyroscope
 
