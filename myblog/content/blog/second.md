@@ -27,9 +27,13 @@ The sensors record the acceleration, gyroscope, magnetometer, of pitch, roll, ya
 
 **Pitch Data**
 
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab2_2.png" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+
 <iframe width="560" height="315" src="https://youtube.com/shorts/jaQQVk0lff0" title="Pitch Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **Roll Data**
+
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab2_3.png" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
 
 <iframe width="560" height="315" src="https://youtube.com/shorts/Dkw2VtJbXNM" title="Roll Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -38,28 +42,53 @@ The sensors record the acceleration, gyroscope, magnetometer, of pitch, roll, ya
 
 **Pre-processed Time-Dependent Motion Graphs and Fast Fourier Transforms (FFTs)**
 
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab2_4.png" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+
 **Post-Processed Time-Dependent Motion Graphs with 5 Hz Low-Pass Filter**
+
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab2_5.png" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
 
 **Pre-Processed and Post-Processed Time-Dependent Motion Graphs**
 
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab2_6.png" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+
 Here is an additional analysis of the low-pass filter with vibrational noise generated from bashing the IMU sensor against the table. As seen, the vibrational artifacts are not preserved with this cut-off frequency.
+
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab2_7.png" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
 
 ### Gyroscope
 
 After setting up the accelerometer chip with direct wire and BLE, the gyroscope is connected and continuously streamed to compare the angular displacement between the two chips. Gyroscope data is formulated with the time-step equations provided in class, leading to noticeable drift within the gyroscope data over time. Accelerometer pitch and roll (raw and filtered), in addition to gyroscope pitch, roll, and yaw (raw) are below.
 
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab2_8.png" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+
 With the complementary filter (formula seen below), the approximation for pitch and roll visualized in the graphs demonstrates greater accuracy over a set response time. Similar to a logarithmic function approaching a specific value, the gyroscope approximation improves in accuracy with greater data (as a general rule). Across different alpha values, the higher the value, the greater the fit for the approximated gyroscopic data is to the raw accelerometer data. From this, I will centralize on an alpha value of ~0.5.
 
 - **Alpha = 0.02:** 
+
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab2_9.png" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+
 - **Alpha = 0.2:** 
+
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab2_10.png" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+
 - **Alpha = 0.4:** 
+
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab2_11.png" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+
 - **Alpha = 0.8:** 
+
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab2_12.png" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
 
 ### Sample Data
 
 With the bluetooth arrangement and removing all print statements, the Artemis board transmits data with a sampling frequency of ~350 Hz to ~400 Hz. Sizes of arrays were preallocated with the variable “time_pacakge_size” for 5000 to stream about 10-12 seconds worth of data. My method involves storing all the IMU data into separate accelerometer and gyroscope arrays, and then streaming the data over after a set timeframe by looping through the arrays. These are then reassembled in the Jupyter Notebook.
 
 - **Speed of Sampling**
+
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab2_13.png" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
+
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab2_14.png" alt="Lab_1_1" style="max-width:250px; border-radius:12px; margin:0 20px 10px 0;" />
 
 - **Time-Stamped IMU Data**
 
