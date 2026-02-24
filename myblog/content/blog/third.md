@@ -53,6 +53,45 @@ For this specific case, a calibration curve is developed specifically for the me
 
 Overall, the sensors demonstrate pretty strong reliability and high-accuracy. By assessing the R^2 value from the average calculated ToF measurement at each location, the higher correlation factor proves consistency among the results during testing. Additionally, with the slope of the line at ~1.01, this is indicative of a highly accurate measurement from the sensors in general. Given the range or accuracy from 0.3 - 3.5 m, this is an additional proof that the medium-range option proves the most dynamic in this circumstance.
 
+```cpp
+import numpy as np
+
+actual = np.array([0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1, 2.4, 2.7, 3.0, 3.3, 3.6])
+measured1 = np.array([0.287, 0.544, 0.844, 1.160, 1.492, 1.791, 2.099, 2.415, 2.724, 3.054, 3.244, 3.518])
+measured2 = np.array([0.281, 0.508, 0.811, 1.177, 1.465, 1.763, 2.089, 2.441, 2.774, 3.028, 3.255, 3.510])
+
+measured_avg = (measured1 + measured2) / 2
+
+# Linear regression
+m_avg, b_avg = np.polyfit(actual, measured_avg, 1)
+
+# Correlation coefficient
+r_avg = np.corrcoef(actual, measured_avg)[0, 1]
+
+print("Averaged Sensor Calibration:")
+print(f"  Slope = {m_avg:.4f}")
+print(f"  Intercept = {b_avg:.4f}")
+print(f"  Correlation (R) = {r_avg:.5f}")
+print(f"  R^2 = {r_avg**2:.5f}")
+
+import matplotlib.pyplot as plt
+
+fit_avg = m_avg * actual + b_avg
+
+plt.figure(figsize=(10,6))
+plt.plot(actual, measured1, label="ToF Sensor #1")
+plt.plot(actual, measured1, label="ToF Sensor #2")
+plt.plot(actual, measured_avg, 'o', label='Average Measured Distance')
+plt.plot(actual, fit_avg, '-', label=f'Linear Fit (R = {r_avg:.4f})')
+
+plt.xlabel("Actual Distance (m)")
+plt.ylabel("Measured Distance (m)")
+plt.title("ToF Sensor Calibration for Actual/Expected vs. Measured")
+plt.legend()
+plt.grid(True)
+plt.show()
+```
+
 ### ToF Sensor Speed Optimization
 
 With the Artemis infrastructure, the data streaming within the code could be controlled with greater accuracy during printing in the Serial Monitor. The following is a snippet of the code and screenshots of the ArduinoIDE with this change:
