@@ -23,7 +23,7 @@ Two ToF sensors are implemented for distance sensing in order to provide an appr
 ### Short, Medium, and Long Range Assessment
 hese various modes are efficient depending on the use case of the stunt car. For smaller obstacle courses with tighter turns (i.e. maneuvering within furniture, small mazes, etc.) the short range option is best. For normal-sized rooms with typical spaced obstacles (i.e. door-frames, chairs, etc.), the medium range configuration provides the best dynamic range. For large spaces with few minor obstacles (i.e. clear stadiums, limited objects, etc.), the long range option is the most efficient. For our usage, considering the stunt car will operate primarily inside labs and classrooms, **the medium range** option is the best and requires the Polulu VL53L1X Library.
 
-<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab3_1.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 20px 10px 0;" />
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab3_1.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 40px 20px 0;" />
 
 ## Lab #3 Outcomes
 
