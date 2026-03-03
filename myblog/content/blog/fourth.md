@@ -27,7 +27,7 @@ The following is the configuration for testing the respective PWM output on the 
 <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab4_2.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 40px 20px 0;" />
 
 *Video of 50% PWM Signals*
-<iframe width="560" height="315" src="https://www.youtube.com/embed/31ZUwOgQ3GQ" title="Pitch Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/31ZUwOgQ3GQ" title="Oscilloscope Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 *50% Duty Cycle on All Pins Code*
 
@@ -63,10 +63,10 @@ void loop() {
 <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab4_3.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 40px 20px 0;" />
 
 *Video of Spinning Wheels (Power Supply)*
-<iframe width="560" height="315" src="https://www.youtube.com/embed/a15glawQcvA" title="Pitch Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/a15glawQcvA" title="Spinning Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 *Video of Spinning Wheels (Battery Powered)*
-<iframe width="560" height="315" src="https://www.youtube.com/embed/fgmLQBIOKAA" title="Pitch Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fgmLQBIOKAA" title="Spinning Video with Battery" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 *Code for Spinning Wheels (Wheel #2 Commented Out)*
 
