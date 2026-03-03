@@ -168,18 +168,23 @@ As a more complicated open-loop system, the stunt car is programmed to move forw
 
 ```cpp
 void loop() {
- // Forward
- analogWrite(Pin9, 100*CF_Left);
- analogWrite(Pin11, 100*CF_Right);
- analogWrite(Pin13, 0*CF_Left);
- analogWrite(Pin12, 0*CF_Right);
- // Stop
- delay(1000);
- // Turn
- analogWrite(Pin9, 0);
- analogWrite(Pin13, 100*CF_Left);
- analogWrite(Pin13, 100*CF_Left);
- analogWrite(Pin12, 0*CF_Right);
+void loop() {
+  // Forward
+  analogWrite(Pin9, 100*CF_Left);
+  analogWrite(Pin11, 100*CF_Right);
+  analogWrite(Pin13, 0*CF_Left);
+  analogWrite(Pin12, 0*CF_Right);
+  // Stop
+  delay(1000);
+  analogWrite(Pin9, 0);
+  analogWrite(Pin11, 0);
+  delay(1000);
+  // Turn
+  analogWrite(Pin9, 0);
+  analogWrite(Pin11, 250*CF_Right);
+  analogWrite(Pin12, 0*CF_Left);
+  analogWrite(Pin13, 250*CF_Left);
+  delay(1000);
 }
 ```
 
