@@ -27,6 +27,7 @@ The following is the configuration for testing the respective PWM output on the 
 <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab4_2.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 40px 20px 0;" />
 
 *Video of 50% PWM Signals*
+<iframe width="560" height="315" src="https://www.youtube.com/embed/31ZUwOgQ3GQ" title="Pitch Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 *50% Duty Cycle on All Pins Code*
 
@@ -47,7 +48,6 @@ void setup() {
  analogWrite(Pin12,0);
 }
 
-
 void loop() {
  analogWrite(Pin9,128);
  analogWrite(Pin10,128);
@@ -63,8 +63,10 @@ void loop() {
 <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab4_3.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 40px 20px 0;" />
 
 *Video of Spinning Wheels (Power Supply)*
+<iframe width="560" height="315" src="https://www.youtube.com/embed/a15glawQcvA" title="Pitch Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 *Video of Spinning Wheels (Battery Powered)*
+<iframe width="560" height="315" src="https://www.youtube.com/embed/fgmLQBIOKAA" title="Pitch Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 *Code for Spinning Wheels (Wheel #2 Commented Out)*
 
@@ -97,7 +99,8 @@ void loop() {
 
 In order to test the efficacy of the fully assembled stunt car, a script was created that moves the car forward in intervals. Originally, the testing script was created to move the car back and forward, however, this revealed an issue with motor controller #2 moving backwards. This required altering some pin configurations temporarily to confirm viability.
 
-*Independent Stunt Car Test #1*
+*Video of Independent Stunt Car Test #1*
+<iframe width="560" height="315" src="https://www.youtube.com/embed/u4AfwTSkIYw" title="Pitch Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 *Pulse Forward Motion Code*
 
@@ -118,12 +121,16 @@ void loop() {
 
 The pulse forward motion code was continuously run with different “analogWrite” values to determine the minimum PWM required for effective usage. Throughout the previous examples, PWM at about ~30% duty cycle proved effective at strong motor motion, indicating a value around 30% will be ideal. The following varieties of PWM were experimented to determine an motors minimum:
 - *PWM ~15%* (“analogWrite(38)”): Low Motor Noises and No Motion
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HO-IKPKO2ks" title="Pitch Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 - *PWM ~20%* (“analogWrite(51)”): Low Motor Noises and No Motion
+<iframe width="560" height="315" src="https://www.youtube.com/embed/iIbxTEiBS6A" title="Pitch Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 - *PWM ~25%* (“analogWrite(65)”): Slight Staggering in Motion 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kH5fG9yGOh4" title="Pitch Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 - *PWM ~30%* (“analogWrite(77)”): Consistent Linear Motion 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8O9yRNMbfRA" title="Pitch Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Calibration Factor
 
