@@ -13,7 +13,7 @@ Lab #4 adds the motor drivers as one of the final electrical components onto the
 
 **Wiring Diagram for Full-System (IMU, ToF, and Motor Drivers)**
 
-<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab3_1.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 40px 20px 0;" />
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab4_1.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 40px 20px 0;" />
 
 - *Pin Configuration:* The first motor driver is connected to Pins 9 and 10, and the second motor controller is connected to 11 and 12. These pins are selected since all of these digital pins have PWM capabilities, which are required for usage during the lab. On the motor controllers, channels A1 and B1 are tied together (in addition to A2 and B2) to increase the total current output to the stunt car motors to 4 A at the peak.
 - *Battery Configuration:* Considering motor controllers require significant current for proper operation, the motors are powered from a separate battery as opposed to the microcontroller to prevent damage. As such, the main circuit is powered with the 750 mAh battery and the two motor controllers are connected in parallel to a 3.7 V, 850 mAh battery. This battery meets the specification of the DRV8833 dual motor driver datasheet, which requires input voltage from 2.7 V to 10.8 V
@@ -23,6 +23,8 @@ Lab #4 adds the motor drivers as one of the final electrical components onto the
 ### Oscilloscope Testing of PWM Signals
 
 The following is the configuration for testing the respective PWM output on the applicable pins. For this example, all pins are set to 50% duty cycle, and motor controllers are probed at the end of the A2/B2 wires (grounded to the Artemis board). These initial tests are conducted with a power supply at 3.7V and a 2 A current limit for the motor controller.
+
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab4_2.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 40px 20px 0;" />
 
 *Video of 50% PWM Signals*
 
@@ -58,6 +60,8 @@ void loop() {
 
 ###	Wheel Spinning Tests with Battery and Power Supply
 
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab4_3.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 40px 20px 0;" />
+
 *Video of Spinning Wheels (Power Supply)*
 
 *Video of Spinning Wheels (Battery Powered)*
@@ -88,6 +92,8 @@ void loop() {
 ```
 
 ### Finalized Car with Assembled Components
+
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab4_4.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 40px 20px 0;" />
 
 In order to test the efficacy of the fully assembled stunt car, a script was created that moves the car forward in intervals. Originally, the testing script was created to move the car back and forward, however, this revealed an issue with motor controller #2 moving backwards. This required altering some pin configurations temporarily to confirm viability.
 
