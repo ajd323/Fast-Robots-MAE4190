@@ -161,6 +161,8 @@ void loop() {
 As a more complicated open-loop system, the stunt car is programmed to move forward, stop, and perform a turn during the active time. This continues indefinitely until the device is powered off. Since this has no inputs from the sensing components, this would constitute an open-loop control system. Here is a video and code of this mechanism:
 
 *Video of Open-Loop Motion*
+ <iframe width="560" height="315" src="https://www.youtube.com/embed/VjKvfM4Aqgc" title="Pitch Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 
 *Open-Loop Turning Code*
 
