@@ -168,7 +168,6 @@ As a more complicated open-loop system, the stunt car is programmed to move forw
 
 ```cpp
 void loop() {
-void loop() {
   // Forward
   analogWrite(Pin9, 100*CF_Left);
   analogWrite(Pin11, 100*CF_Right);
