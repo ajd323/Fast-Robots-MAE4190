@@ -197,3 +197,38 @@ void PID_step(){
 ```
 
 For tuning the ideal constants for common usage with the stunt car, each component of the PID controller was tuned and progressively integrated starting from proportion gain (i.e. determine P, then PI, and finally PID). The ideal distance is set to “304 mm,” or about the distance of 1 tile (marked in the videos), and motor output is reduced in half to better tune the specific gain constants (i.e. “analogWrite(PinX, motor_output/2).
+
+*Proportional Gain Control (Kp)*
+
+From experimentation, proportional gain values tended to either aggressively undershoot or overshoot the ideal distance. With this in mind, values between 0.5 and 1.0 proved ideal for our given usage, however, there is still some level of adjustment for overshoot that is optimizable.
+- **Kp = 0.5 (Undershoot and Stalling at Lower Adjustment)**
+
+- **Kp = 1.0 (Slight Overshoot)**
+
+- **Kp = 1.5 (Aggressive Overshoot)**
+
+
+*Integral Gain Control (Ki)*
+
+With Kp set to 1.0, integral gain control is implemented through a similar methodology. From experimentation, values between 0.025 and 0.075 proved strong contenders for removing the error over time and improving settling towards steady-state from just proportional gain. Ki = 0.05 provided the best steady-state at ~310 mm during experimental testing. Additionally, from this step Kp was reverted to 0.5 to reduce the excessive overshoot from this value through the usage of a deadband filter to prevent motor stalling at low outputs and anti-windup. These calibrations were done with Kp = 1.0 to highlight the effect of changing Ki in general.
+
+**Deadband Filter**
+```cpp
+if (motor_output > 0 && motor_output < 40) motor_output = 40;
+if (motor_output < 0 && motor_output > -40) motor_output = -40;
+```
+**Anti-Windup**
+```cpp
+integral_error = constrain(integral_error, -300, 300);
+```
+
+- **Ki = 0.025 (Moderately Deviated Value)**
+
+- **Ki = 0.5 (Close Final Steady-State Value)**
+
+- **Ki = 0.075 (Slightly Higher Steady-State Value)**
+
+
+*Derivative Gain Control (Kd)*
+
+Finally, from additional testing and tweaking of all the values, Kd = 0.1 is determined as a strong final gain constant for the derivative control. After selecting Kp = 0.3, Ki = 0.05, and Kd = 0.1, a final trial is conducted to analyze the efficacy of the total gain values. Here are the results from this trial:
