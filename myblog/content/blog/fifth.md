@@ -312,7 +312,36 @@ plt.show
 
 **Linear Extrapolation**
 
-**ADD WORK HERE**
+Finally, to improve performance for receiving ToF data, a linear extrapolation subscript was implemented in "PID_step" function. This checks for the availability of data, and extrapolates expected distance based on previous distance/ speed to imporve processing performance. The following is the specific code snippet implemented in the function:
+
+*Arduino Code (C++)*
+```cpp
+void PID_step(){
+ // Setting Time Steps and variables
+ unsigned long now = millis();
+ float dt = (now - PID_last_time) / 1000.0;
+ if(ToF_sensor_2.checkForDataReady()){
+   ToF_Front = ToF_sensor_2.read();
+ } else if(PID_counter > 2){
+   float x1 = distance_value[PID_counter-2];
+   float x2 = distance_value[PID_counter-1];
+   float t1 = timestamp_value[PID_counter-2]/1000;
+   float t2 = timestamp_value[PID_counter-1]/1000;
+   float extrapolated_slope = (x2-x1) / (t2-t1);
+   ToF_Front = x2 + extrapolated_slope*((now/1000)-t2)
+ } else{
+   ToF_Front = ToF_sensor_2.read();
+ }
+…
+```
+
+*Histogram of Time Intervals with Linear Extrapolation*
+
+**HISTOGRAM**
+
+*Video of PID Control with Linear Extrapolation*
+
+**VIDEO**
 
 # Discussion
 
