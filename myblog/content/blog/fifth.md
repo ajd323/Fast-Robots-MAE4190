@@ -266,6 +266,7 @@ Finally, from additional testing and tweaking of all the values, Kd = 0.12 is de
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7xEpBpuT61o" title="Oscilloscope Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 *Outputs from Total Testing with Kp = 1.0, Ki = 0.05, and Kd = 0.12*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_9.png" alt="Lab_1_1" style="max-width:600px; border-radius:12px; margin:0 40px 20px 0;" />
 
 **Range and Sampling Time**
 
@@ -313,7 +314,7 @@ plt.show
 
 *Histogram of Time Intervals*
 
-**HISTOGRAM**
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_10.png" alt="Lab_1_1" style="max-width:600px; border-radius:12px; margin:0 40px 20px 0;" />
 
 **Linear Extrapolation**
 
@@ -342,11 +343,7 @@ void PID_step(){
 
 *Histogram of Time Intervals with Linear Extrapolation*
 
-**HISTOGRAM**
-
-*Video of PID Control with Linear Extrapolation*
-
-**VIDEO**
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_11.png" alt="Lab_1_1" style="max-width:600px; border-radius:12px; margin:0 40px 20px 0;" />
 
 # Discussion
 
