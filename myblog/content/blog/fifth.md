@@ -11,13 +11,13 @@ taxonomies = { tags = ["Open-Loop Design", "Closed-Loop Design", "PID", "Wireles
 
 Lab #5 integrates a closed-loop feedback system for controlling the stunt car linear motion and collision detection. Where Lab #4 ended by introducing the open-loop control system for motion, Lab #5 expands by utilizing data from the Time of Flight (ToF) sensors to construct a more complex closed-loop system known as a Proportional-Integral-Derivative (PID) controller. By tuning the various gain constants for the typical PID controller framework, the stunt car is enabled with improved handling while stopping for obstacles.
 
-<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_1.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 40px 20px 0;" />
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_1.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 40px 20px 40px;" />
 
 ## Configuration
 
 The stunt car follows the same configurations as the previous lab, including wired components, ToF locations, and overall assembly. Additionally, a custom 3D-printed plate was installed for improved mounting of the Artemis Nano, IMU sensor, and the 4-port connector. The following are images of the stunt car and sensors for the following lab:
 
-<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_2.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 40px 20px 0;" />
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_2.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 40px 20px 40px;" />
 
 **Sending and Receiving Bluetooth for PID**
 
