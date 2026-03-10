@@ -17,7 +17,7 @@ Lab #5 integrates a closed-loop feedback system for controlling the stunt car li
 
 The stunt car follows the same configurations as the previous lab, including wired components, ToF locations, and overall assembly. Additionally, a custom 3D-printed plate was installed for improved mounting of the Artemis Nano, IMU sensor, and the 4-port connector. The following are images of the stunt car and sensors for the following lab:
 
-<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_2.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 40px 20px 40px;" />
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_2.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 **Sending and Receiving Bluetooth for PID**
 
@@ -207,19 +207,19 @@ For tuning the ideal constants for common usage with the stunt car, each compone
 From experimentation, proportional gain values tended to either aggressively undershoot or overshoot the ideal distance. With this in mind, values between 0.5 and 1.0 proved ideal for our given usage, however, there is still some level of adjustment for overshoot that is optimizable.
 - **Kp = 0.5 (Undershoot and Stalling at Lower Adjustment)**
 
-<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_3.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 40px 20px 0;" />
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_3.png" alt="Lab_1_1" style="max-width:600px; border-radius:12px; margin:0 40px 20px 0;" />
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/aD0yegciUqc" title="Oscilloscope Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 - **Kp = 1.0 (Slight Overshoot)**
 
-<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_4.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 40px 20px 0;" />
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_4.png" alt="Lab_1_1" style="max-width:600px; border-radius:12px; margin:0 40px 20px 0;" />
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/eom-gSW67K4" title="Oscilloscope Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 - **Kp = 1.5 (Aggressive Overshoot)**
 
-<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_5.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 40px 20px 0;" />
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_5.png" alt="Lab_1_1" style="max-width:600px; border-radius:12px; margin:0 40px 20px 0;" />
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_RaT5glBHwA" title="Oscilloscope Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -239,19 +239,19 @@ integral_error = constrain(integral_error, -300, 300);
 
 - **Ki = 0.025 (Moderately Deviated Value)**
 
-<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_6.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 40px 20px 0;" />
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_6.png" alt="Lab_1_1" style="max-width:600px; border-radius:12px; margin:0 40px 20px 0;" />
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/kllkOUTbECs" title="Oscilloscope Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 - **Ki = 0.5 (Close Final Steady-State Value)**
 
-<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_7.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 40px 20px 0;" />
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_7.png" alt="Lab_1_1" style="max-width:600px; border-radius:12px; margin:0 40px 20px 0;" />
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/IZJE2x5kcqM" title="Oscilloscope Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 - **Ki = 0.075 (Slightly Higher Steady-State Value)**
 
-<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_8.png" alt="Lab_1_1" style="max-width:400px; border-radius:12px; margin:0 40px 20px 0;" />
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_8.png" alt="Lab_1_1" style="max-width:600px; border-radius:12px; margin:0 40px 20px 0;" />
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/W_je22cq2Kc" title="Oscilloscope Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
