@@ -5,7 +5,7 @@ description = ""
 taxonomies = { tags = ["Motor Drivers", "Calibration", "Open-Loop Design"] }
 +++
 
-## Summary Lab #3
+## Summary Lab #4
 
 Lab #4 adds the motor drivers as one of the final electrical components onto the stunt car for automated control through the RedBoard Artemis Nano. These motor drivers control the left and right side wheels on the stunt car through PWM signals generated from the digital pins. The following lab is an update of the previously designed board (including IMUs and ToF configurations) with motor control, and the testing process for verifying the hardware in practice.
 
@@ -18,7 +18,7 @@ Lab #4 adds the motor drivers as one of the final electrical components onto the
 - *Pin Configuration:* The first motor driver is connected to Pins 9 and 10, and the second motor controller is connected to 11 and 12. These pins are selected since all of these digital pins have PWM capabilities, which are required for usage during the lab. On the motor controllers, channels A1 and B1 are tied together (in addition to A2 and B2) to increase the total current output to the stunt car motors to 4 A at the peak.
 - *Battery Configuration:* Considering motor controllers require significant current for proper operation, the motors are powered from a separate battery as opposed to the microcontroller to prevent damage. As such, the main circuit is powered with the 750 mAh battery and the two motor controllers are connected in parallel to a 3.7 V, 850 mAh battery. This battery meets the specification of the DRV8833 dual motor driver datasheet, which requires input voltage from 2.7 V to 10.8 V
 
-## Lab #3 Outcomes
+## Lab #4 Outcomes
 
 ### Oscilloscope Testing of PWM Signals
 
