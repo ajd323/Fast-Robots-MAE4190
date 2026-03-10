@@ -200,7 +200,7 @@ void PID_step(){
 }
 ```
 
-For tuning the ideal constants for common usage with the stunt car, each component of the PID controller was tuned and progressively integrated starting from proportion gain (i.e. determine P, then PI, and finally PID). The ideal distance is set to “304 mm,” or about the distance of 1 tile (marked in the videos), and motor output is reduced in half to better tune the specific gain constants (i.e. “analogWrite(PinX, motor_output/2).
+For tuning the ideal constants for common usage with the stunt car, each component of the PID controller was tuned and progressively integrated starting from proportion gain (i.e. determine P, then PI, and finally PID). The ideal distance is set to “304 mm,” or about the distance of 1 tile (marked in the videos), and motor output is reduced in half to better tune the specific gain constants (i.e. “analogWrite(PinX, motor_output/2). Finally, all distance graphs are specifically probed with the ToF sensor, thus representing ToF vs. Time next to the Motor Input vs. Time.
 
 *Proportional Gain Control (Kp)*
 
@@ -270,20 +270,7 @@ Finally, from additional testing and tweaking of all the values, Kd = 0.12 is de
 
 **Range and Sampling Time**
 
-As established in Lab #3, the ToF sensors for this specific stunt car configuration is set to the medium-range mode, which has proved effective for sensing objects in a large room as seen with the following use cases. The sensors are set to the minimum timing budget of the ToF sensors which is about every 20 ms or about a 50 Hz sampling frequency. This means the sampling rate is bottlenecked at about 20 Hz, but additional code is added to control the output rate of the data from the Artemis Nano and confirmed in Jupyter Notebook:
-
-*Arduino Code (C++)*
-```cpp
-unsigned long last_pid_time = 0;
-const unsigned long PID_INTERVAL = 25; //ms
-if(PID_control){
-         unsigned long now = millis();
-         if(now - last_PID_time >= PID_interval){
-           last_PID_time = now;
-           PID_step();
-         }
-       }
-```
+As established in Lab #3, the ToF sensors for this specific stunt car configuration is set to the medium-range mode, which has proved effective for sensing objects in a large room as seen with the following use cases. The sensors are set to the minimum timing budget of the ToF sensors which is about every 20 ms or about a 50 Hz sampling frequency. For the full-scale PID control method, the device operates inconsistently between 30- 50 ms per message, proving some additional delay. This is further illsutrated with th efollowing histogram:
 
 *Jupyter Notebook (Python)*
 ```cpp
@@ -322,6 +309,16 @@ Finally, to improve performance for receiving ToF data, a linear extrapolation s
 
 *Arduino Code (C++)*
 ```cpp
+unsigned long last_pid_time = 0;
+const unsigned long PID_INTERVAL = 25; //ms
+if(PID_control){
+         unsigned long now = millis();
+         if(now - last_PID_time >= PID_interval){
+           last_PID_time = now;
+           PID_step();
+         }
+       }
+...
 void PID_step(){
  // Setting Time Steps and variables
  unsigned long now = millis();
