@@ -205,6 +205,7 @@ For tuning the ideal constants for common usage with the stunt car, each compone
 *Proportional Gain Control (Kp)*
 
 From experimentation, proportional gain values tended to either aggressively undershoot or overshoot the ideal distance. With this in mind, values between 0.5 and 1.0 proved ideal for our given usage, however, there is still some level of adjustment for overshoot that is optimizable.
+
 - **Kp = 0.5 (Undershoot and Stalling at Lower Adjustment)**
 
 <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab5_3.png" alt="Lab_1_1" style="max-width:600px; border-radius:12px; margin:0 40px 20px 0;" />
@@ -245,7 +246,8 @@ With Kp set to 1.0, integral gain control is implemented through a similar metho
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/W_je22cq2Kc" title="Oscilloscope Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-After completing this initial calibration, the step Kp was reverted to 0.5 to reduce the excessive overshoot, and additional motor controller attributes were added such as a deadband filter to prevent motor stalling at low outputs and anti-windup.
+Additional motor controller attributes were added such as a deadband filter to prevent motor stalling at low outputs and anti-windup.
+
 **Deadband Filter**
 ```cpp
 if (motor_output > 0 && motor_output < 40) motor_output = 40;
@@ -258,9 +260,12 @@ integral_error = constrain(integral_error, -300, 300);
 
 *Derivative Gain Control (Kd)*
 
-Finally, from additional testing and tweaking of all the values, Kd = 0.1 is determined as a strong final gain constant for the derivative control. After selecting Kp = 0.3, Ki = 0.05, and Kd = 0.1, a final trial is conducted to analyze the efficacy of the total gain values. Here are the results from this trial:
+Finally, from additional testing and tweaking of all the values, Kd = 0.12 is determined as a strong final gain constant for the derivative control. After selecting Kp = 1.0, Ki = 0.05, and Kd = 0.12, a final trial is conducted to analyze the efficacy of the total gain values. Here are the results from this trial:
 
-**VALUES**
+*Video with Readjustment*
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7xEpBpuT61o" title="Oscilloscope Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+*Outputs from Total Testing with Kp = 1.0, Ki = 0.05, and Kd = 0.12*
 
 **Range and Sampling Time**
 
