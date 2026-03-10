@@ -224,11 +224,53 @@ integral_error = constrain(integral_error, -300, 300);
 
 - **Ki = 0.025 (Moderately Deviated Value)**
 
+    **PHOTO AND VIDEO**
+
 - **Ki = 0.5 (Close Final Steady-State Value)**
+
+    **PHOTO AND VIDEO**
 
 - **Ki = 0.075 (Slightly Higher Steady-State Value)**
 
+    **PHOTO AND VIDEO**
 
 *Derivative Gain Control (Kd)*
 
 Finally, from additional testing and tweaking of all the values, Kd = 0.1 is determined as a strong final gain constant for the derivative control. After selecting Kp = 0.3, Ki = 0.05, and Kd = 0.1, a final trial is conducted to analyze the efficacy of the total gain values. Here are the results from this trial:
+
+**Range and Sampling Time**
+
+As established in Lab #3, the ToF sensors for this specific stunt car configuration is set to the medium-range mode, which has proved effective for sensing objects in a large room as seen with the following use cases. The sensors are set to the minimum timing budget of the ToF sensors which is about every 20 ms or about a 50 Hz sampling frequency. This means the sampling rate is bottlenecked at about 20 Hz, but additional code is added to control the output rate of the data from the Artemis Nano and confirmed in Jupyter Notebook:
+
+*Arduino Code (C++)*
+```cpp
+unsigned long last_pid_time = 0;
+const unsigned long PID_INTERVAL = 25; //ms
+if(PID_control){
+         unsigned long now = millis();
+         if(now - last_PID_time >= PID_interval){
+           last_PID_time = now;
+           PID_step();
+         }
+       }
+```
+
+*Jupyter Notebook (Python)*
+```cpp
+final_time = norm_time[len(norm_time)-1] / 1000
+print(f"{len(timestamp_list)} messages were received")
+print(f"Estimated message transfer rate is ~ {len(timestamp_list)/final_time} msgs/s")
+print(f"Estimated message transfer rate is ~ {len(timestamp_list)/final_time} Hz")
+```
+
+*Histogram of Time Intervals*
+
+**HISTOGRAM**
+
+**Linear Extrapolation**
+
+**ADD WORK HERE**
+
+# Discussion
+
+This lab was a great chance to integrate PID knowledge from previous System Dynamics classes into real-world, robotic application. The tuning for the individual gain controllers for proportional, integral, and derivative constants provided a strong in-depth analysis for their individual contributions to motor dynamics. This lab was completed with Jamison Taylor, assisted from AI tools for minor debugging, and referenced against Tyler Wisnieski’s GitHub page for comparing effective code structures.
