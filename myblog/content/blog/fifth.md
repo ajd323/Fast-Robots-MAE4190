@@ -5,7 +5,7 @@ description = ""
 taxonomies = { tags = ["Open-Loop Design", "Closed-Loop Design", "PID", "Wireless BLE"] }
 +++
 
-*Please Note: For transparency, this lab was submitted one day late due to issues optimizing the deadband filter in addition to selecting the proper Kp, Ki, and Kd values*
+*Please Note: For transparency, this lab was submitted one day late (on 5/11 at 8:00 am) due to issues optimizing the deadband filter in addition to selecting the proper Kp, Ki, and Kd values. With this in mind, I accept the daily penalty for this specific lab and not the one week extension*
 
 ## Sumamry Lab #5
 
