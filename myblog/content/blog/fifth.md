@@ -225,17 +225,7 @@ From experimentation, proportional gain values tended to either aggressively und
 
 *Integral Gain Control (Ki)*
 
-With Kp set to 1.0, integral gain control is implemented through a similar methodology. From experimentation, values between 0.025 and 0.075 proved strong contenders for removing the error over time and improving settling towards steady-state from just proportional gain. Ki = 0.05 provided the best steady-state at ~310 mm during experimental testing. Additionally, from this step Kp was reverted to 0.5 to reduce the excessive overshoot from this value through the usage of a deadband filter to prevent motor stalling at low outputs and anti-windup. These calibrations were done with Kp = 1.0 to highlight the effect of changing Ki in general.
-
-**Deadband Filter**
-```cpp
-if (motor_output > 0 && motor_output < 40) motor_output = 40;
-if (motor_output < 0 && motor_output > -40) motor_output = -40;
-```
-**Anti-Windup**
-```cpp
-integral_error = constrain(integral_error, -300, 300);
-```
+With Kp set to 1.0, integral gain control is implemented through a similar methodology. From experimentation, values between 0.025 and 0.075 proved strong contenders for removing the error over time and improving settling towards steady-state from just proportional gain. Ki = 0.05 provided the best steady-state at ~310 mm during experimental testing. These calibrations were done with Kp = 1.0 to highlight the effect of changing Ki in general.
 
 - **Ki = 0.025 (Moderately Deviated Value)**
 
@@ -255,9 +245,22 @@ integral_error = constrain(integral_error, -300, 300);
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/W_je22cq2Kc" title="Oscilloscope Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+After completing this initial calibration, the step Kp was reverted to 0.5 to reduce the excessive overshoot, and additional motor controller attributes were added such as a deadband filter to prevent motor stalling at low outputs and anti-windup.
+**Deadband Filter**
+```cpp
+if (motor_output > 0 && motor_output < 40) motor_output = 40;
+if (motor_output < 0 && motor_output > -40) motor_output = -40;
+```
+**Anti-Windup**
+```cpp
+integral_error = constrain(integral_error, -300, 300);
+```
+
 *Derivative Gain Control (Kd)*
 
 Finally, from additional testing and tweaking of all the values, Kd = 0.1 is determined as a strong final gain constant for the derivative control. After selecting Kp = 0.3, Ki = 0.05, and Kd = 0.1, a final trial is conducted to analyze the efficacy of the total gain values. Here are the results from this trial:
+
+**VALUES**
 
 **Range and Sampling Time**
 
@@ -282,6 +285,25 @@ final_time = norm_time[len(norm_time)-1] / 1000
 print(f"{len(timestamp_list)} messages were received")
 print(f"Estimated message transfer rate is ~ {len(timestamp_list)/final_time} msgs/s")
 print(f"Estimated message transfer rate is ~ {len(timestamp_list)/final_time} Hz")
+…
+# Histogram of dt
+plt.figure(figsize=(8,5))
+plt.hist(dt, bins=30, edgecolor='black')
+plt.xlabel("Sampling Interval (ms)")
+plt.ylabel("Count")
+plt.title("Histogram of PID Sampling Intervals")
+plt.grid(True)
+plt.show()
+
+# Histogram of frequency
+freq = 1000.0 / dt
+plt.figure(figsize=(8,5))
+plt.hist(freq, bins=30, edgecolor='black')
+plt.xlabel("Sampling Frequency (Hz)")
+plt.ylabel("Count")
+plt.title("Histogram of PID Loop Frequency")
+plt.grid(True)
+plt.show
 ```
 
 *Histogram of Time Intervals*
