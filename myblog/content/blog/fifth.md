@@ -270,7 +270,7 @@ Finally, from additional testing and tweaking of all the values, Kd = 0.12 is de
 
 **Range and Sampling Time**
 
-As established in Lab #3, the ToF sensors for this specific stunt car configuration is set to the medium-range mode, which has proved effective for sensing objects in a large room as seen with the following use cases. The sensors are set to the minimum timing budget of the ToF sensors which is about every 20 ms or about a 50 Hz sampling frequency. For the full-scale PID control method, the device operates inconsistently between 30- 50 ms per message, proving some additional delay. This is further illsutrated with th efollowing histogram:
+As established in Lab #3, the ToF sensors for this specific stunt car configuration is set to the medium-range mode, which has proved effective for sensing objects in a large room as seen with the following use cases. The sensors are set to the minimum timing budget of the ToF sensors which is about every 20 ms or about a 50 Hz sampling frequency, however, there is bottlenecking occurring with the Serial.print statements that are leading to a message rate between 30 - 60 ms, with incredibly high-variability. The following is an overview of the histogram method for comparing the sampling/ message rate: 
 
 *Jupyter Notebook (Python)*
 ```cpp
@@ -305,7 +305,7 @@ plt.show
 
 **Linear Extrapolation**
 
-Finally, to improve performance for receiving ToF data, a linear extrapolation subscript was implemented in "PID_step" function. This checks for the availability of data, and extrapolates expected distance based on previous distance/ speed to imporve processing performance. The following is the specific code snippet implemented in the function:
+Finally, to improve performance for receiving ToF data, a linear extrapolation subscript was implemented in the "PID_step" function. This checks for the availability of data, and extrapolates expected distance based on previous distance/ speed to improve processing performance. For testing accuracy and reliability of setting sampling rate, 25 Hz was set as the message sending rate, which is togglable through BLE. The following is the specific code snippet implemented in the function:
 
 *Arduino Code (C++)*
 ```cpp
