@@ -199,6 +199,13 @@ With the DMP initiated, the final closed-loop feedback controller developed for 
 
 *Arduino Code (C++)*
 
+From experimentation in the previous lab with the linear PID, experimentation with the proportional, integral, andderivative
+
+**Range and Sampling Time**
+
+Similar to Lab #5, histograms are computed in order to determine the distribution of time sampling during the operation of the orientation PID controller (refer to previous labs for specific Jupyter Notebook scripts). The sensors are running with a message rate of ~50 ms due to bottlenecking with the availability of the DMP data, with incredibly high-variability. The following is an overview of the histogram method for comparing the sampling/ message rate: 
+
+*PHOTO*
 
 
 ## Lab #6 Outcomes
