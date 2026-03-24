@@ -13,7 +13,7 @@ Lab #6 is an expansion of the linear Proportional-Integral-Deriative (PID) contr
 
 The stunt car configuration is still the same from all previous labs, including wired components, ToF locations, and overall assembly (with the 3D printed plates). Additionally, motor drivers were replaced between Lab #5 and Lab #6 due to accidental incorrect wiring for the battery. The following is an image of the stunt car and sensors for the lab:
 
-*PHOTO*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab6_1.png" alt="Lab_1_1" style="max-width:600px; border-radius:12px; margin:0 40px 20px 0;" />
 
 **Sending and Receiving Bluetooth for PID**
 
@@ -326,13 +326,17 @@ void PID_step_ori() {
 
 As an initial test of the IMU streaming capabilities, the motor output was hard coded to 0 and the stunt car was spun constantly to generate yaw values from -180 degrees to 180 degrees. The following is the outcome of the initial orientation test to confirm the viability of the streaming capabilities:
 
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab6_2.png" alt="Lab_1_1" style="max-width:600px; border-radius:12px; margin:0 40px 20px 0;" />
+
 After confirming the strength of the motors and the streaming capabilities of the IMU through the DMP method, testing for the PID-values began. From the previous values for the linear PD, the proportional, integral, and derivative was initially set to 2.0 and 0.12, respectively.
+
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_La6_3.png" alt="Lab_1_1" style="max-width:600px; border-radius:12px; margin:0 40px 20px 0;" />
 
 **Range and Sampling Time**
 
 Similar to Lab #5, histograms are computed in order to determine the distribution of time sampling during the operation of the orientation PID controller (refer to previous labs for specific Jupyter Notebook scripts). The sensors are running with a message rate of ~42 ms due to bottlenecking with the availability of the DMP data, with incredibly high-variability. The following is an overview of the histogram method for comparing the sampling/ message rate: 
 
-*PHOTO*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab6_4.png" alt="Lab_1_1" style="max-width:600px; border-radius:12px; margin:0 40px 20px 0;" />
 
 ## Lab #6 Outcomes
 
