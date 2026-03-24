@@ -207,13 +207,15 @@ case SPIN_TEST:{
 }
 ```
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/L7YuEhmyxPA" title="Oscillocope" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 **Digital Motion Processing (DMP) Enabling**
 
 In addition to the previous set-up, the Digital Motion Processing (DMP) is established for the ICM-20948 9DOF breakout board to reduce drift experienced in previous labs. This is accomplished by comparing the data between the gyroscope, the accelerometer, and the magnetometer to correct error and improve the orientation measurement.
 
 To enable the DMP, the “ICM_20948_C.h” file in the SparkFun ICM-20948 Arduino Library is edited to provide access to the DMP feature. By commenting out the “#define ICM_20948_UES_DMP” definition, the DMP feature is accessible for all future usages. “Example7_DMP_Quat6_EulerAngles” is uploaded to the RedBoard Artemis Nano to observe the improved IMU orientation measurements (pitch, roll, yaw).
 
-*VIDEO*
+<iframe width="560" height="315" src="https://www.youtube.com/embed/AVIMCg7xIIs" title="Oscillocope" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Lab #6 Outcomes
 
@@ -329,6 +331,8 @@ As an initial test of the IMU streaming capabilities, the motor output was hard 
 <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab6_2.png" alt="Lab_1_1" style="max-width:600px; border-radius:12px; margin:0 40px 20px 0;" />
 
 After confirming the strength of the motors and the streaming capabilities of the IMU through the DMP method, testing for the PID-values began. From the previous values for the linear PD, the proportional, integral, and derivative was initially set to 2.0 and 0.12, respectively.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/WMRuirsZD40" title="Oscillocope" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_La6_3.png" alt="Lab_1_1" style="max-width:600px; border-radius:12px; margin:0 40px 20px 0;" />
 
