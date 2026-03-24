@@ -334,7 +334,7 @@ After confirming the strength of the motors and the streaming capabilities of th
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/WMRuirsZD40" title="Oscillocope" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_La6_3.png" alt="Lab_1_1" style="max-width:600px; border-radius:12px; margin:0 40px 20px 0;" />
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab6_3.png" alt="Lab_1_1" style="max-width:600px; border-radius:12px; margin:0 40px 20px 0;" />
 
 **Range and Sampling Time**
 
