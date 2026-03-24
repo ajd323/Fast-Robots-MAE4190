@@ -183,6 +183,30 @@ ble.start_notify(ble.uuid['RX_STRING'], notif_callback_PID)
 ble.send_command(CMD.PID_ORI_TRANSMISSION, "")
 ```
 
+**Spin Test**
+
+A spin test BLE case is integrated into the RedBoard Artemis to confirm the viability of the spinning mechanisms and the battery strength of the stunt car for performing these spins. The following is the ArduinoIDE script and a video demonstrated the performance of this script:
+
+```cpp
+case SPIN_TEST:{
+  float start_time = millis();
+    while(millis() - start_time < 500) {
+      analogWrite(Pin9, 255.0);
+      analogWrite(Pin11, 0);
+      analogWrite(Pin12, 255.0);
+      analogWrite(Pin13, 0);
+    }
+    analogWrite(Pin9, 0);
+    analogWrite(Pin11, 0);
+    analogWrite(Pin12, 0);
+    analogWrite(Pin13, 0);
+    tx_estring_value.clear();
+    tx_estring_value.append("Spin Test Complete");
+    tx_characteristic_string.writeValue(tx_estring_value.c_str());
+    break;
+}
+```
+
 **Digital Motion Processing (DMP) Enabling**
 
 In addition to the previous set-up, the Digital Motion Processing (DMP) is established for the ICM-20948 9DOF breakout board to reduce drift experienced in previous labs. This is accomplished by comparing the data between the gyroscope, the accelerometer, and the magnetometer to correct error and improve the orientation measurement.
@@ -193,21 +217,123 @@ To enable the DMP, the “ICM_20948_C.h” file in the SparkFun ICM-20948 Arduin
 
 ## Lab #6 Outcomes
 
-**P/I/D Discussion**
+**P/D Discussion**
 
-With the DMP initiated, the final closed-loop feedback controller developed for the orientation-based is a variation of the previous linear PID controller. The script receives data regarding the ideal orientation from the “PID_ORI_GAIN” function, and the main orientation controller utilizes data from the IMU to adjust the relative yaw. The PID values and response is stored locally on the Artemis Nano board, and the “PID_ORI_TRANSMISSION” function sends the data to the Jupyter Notebook script for graphing. The following are the major attributes of the orientation-based PID controller on the Artemis Nano board: 
+With the DMP initiated, the final closed-loop feedback controller developed for the orientation-based is a variation of the previous linear PD controller. The script receives data regarding the ideal orientation from the “PID_ORI_GAIN” function, and the main orientation controller utilizes data from the IMU to adjust the relative yaw. The PD values and response is stored locally on the Artemis Nano board, and the “PID_ORI_TRANSMISSION” function sends the data to the Jupyter Notebook script for graphing. The following are the major attributes of the orientation-based PD controller on the Artemis Nano board: 
 
 *Arduino Code (C++)*
+```cpp
+void PID_step_ori() {
+ unsigned long now = millis();
+ float dt = (now - ori_PID_last_time) / 1000.0;
+ if (dt <= 0) return;
+ ori_PID_last_time = now;
 
-From experimentation in the previous lab with the linear PID, experimentation with the proportional, integral, andderivative
+ icm_20948_DMP_data_t data;
+ ICM_20948_Status_e imu_status;
+
+
+ // Drain FIFO until only the newest frame remains
+ do {
+   imu_status = myICM.readDMPdataFromFIFO(&data);
+ } while (imu_status == ICM_20948_Stat_FIFOMoreDataAvail);
+
+
+ // If FIFO was empty, skip this PID cycle
+ if (imu_status == ICM_20948_Stat_FIFONoDataAvail) {
+   return;
+ }
+
+
+ float yaw_deg = 0.0;
+ if ((myICM.status == ICM_20948_Stat_Ok) || (myICM.status == ICM_20948_Stat_FIFOMoreDataAvail)) {
+   if (data.header & DMP_header_bitmap_Quat6) {
+     double q1 = ((double)data.Quat6.Data.Q1) / 1073741824.0;
+     double q2 = ((double)data.Quat6.Data.Q2) / 1073741824.0;
+     double q3 = ((double)data.Quat6.Data.Q3) / 1073741824.0;
+     double q0 = sqrt(1.0 - (q1*q1 + q2*q2 + q3*q3));
+
+
+     double qw = q0;
+     double qx = q2;
+     double qy = q1;
+     double qz = -q3;
+
+
+     double t3 = 2.0 * (qw*qz + qx*qy);
+     double t4 = 1.0 - 2.0 * (qy*qy + qz*qz);
+     yaw_deg = atan2(t3, t4) * 180.0 / PI;
+   }
+ }
+
+
+ // unwrap yaw error
+ float ori_proportional_error = ori_PID_target - yaw_deg;
+ if (ori_proportional_error > 180) ori_proportional_error -= 360;
+ if (ori_proportional_error < -180) ori_proportional_error += 360;
+
+
+ // --- Derivative term (filtered) ---
+ float d_raw = (ori_proportional_error - ori_PID_prev_error) / dt;
+ float ori_derivative_error = ori_alpha * d_raw + (1 - ori_alpha) * ori_prev_d;
+ ori_prev_d = ori_derivative_error;
+ ori_PID_prev_error = ori_proportional_error;
+
+
+ float output = 3 * Kop * ori_proportional_error +  Kod * ori_derivative_error; // Koi * ori_integral_error +
+ output = constrain(output, -255, 255);
+ const float MIN_PWM = 140;
+ const float ERR_EPS = 5.0; // degrees
+
+
+ if (fabs(output) > 0 && fabs(output) < MIN_PWM && fabs(ori_proportional_error) > ERR_EPS) {
+   output = (output > 0) ? MIN_PWM : -MIN_PWM;
+ }
+
+
+ // store data
+ if (ori_PID_counter < time_package_size) {
+   ori_timestamp_value[ori_PID_counter] = now;
+   ori_distance_value[ori_PID_counter] = yaw_deg;
+   ori_motorPWM_value[ori_PID_counter] = output;
+   ori_proportional_value[ori_PID_counter] = ori_proportional_error;
+   //ori_integral_value[ori_PID_counter] = ori_integral_error;
+   //ori_derivative_value[ori_PID_counter] = ori_derivative_error;
+   ori_PID_counter++;
+ }
+
+
+ // symmetric turning
+ if (output > 0) {
+   // turn left: left reverse, right forward
+   analogWrite(Pin13, output * CF_Left);  // left reverse
+   analogWrite(Pin11, output * CF_Right); // right forward
+   analogWrite(Pin9, 0);
+   analogWrite(Pin12, 0);
+ } else {
+   float rev = -output;
+   // turn right: left forward, right reverse
+   analogWrite(Pin9, rev * CF_Left);      // left forward
+   analogWrite(Pin12, rev * CF_Right);    // right reverse
+   analogWrite(Pin11, 0);
+   analogWrite(Pin13, 0);
+ }
+ if(myICM.status != ICM_20948_Stat_FIFOMoreDataAvail){
+   delay(10);
+ }
+}
+```
+
+As an initial test of the IMU streaming capabilities, the motor output was hard coded to 0 and the stunt car was spun constantly to generate yaw values from -180 degrees to 180 degrees. The following is the outcome of the initial orientation test to confirm the viability of the streaming capabilities:
+
+After confirming the strength of the motors and the streaming capabilities of the IMU through the DMP method, testing for the PID-values began. From the previous values for the linear PD, the proportional, integral, and derivative was initially set to 2.0 and 0.12, respectively.
 
 **Range and Sampling Time**
 
-Similar to Lab #5, histograms are computed in order to determine the distribution of time sampling during the operation of the orientation PID controller (refer to previous labs for specific Jupyter Notebook scripts). The sensors are running with a message rate of ~50 ms due to bottlenecking with the availability of the DMP data, with incredibly high-variability. The following is an overview of the histogram method for comparing the sampling/ message rate: 
+Similar to Lab #5, histograms are computed in order to determine the distribution of time sampling during the operation of the orientation PID controller (refer to previous labs for specific Jupyter Notebook scripts). The sensors are running with a message rate of ~42 ms due to bottlenecking with the availability of the DMP data, with incredibly high-variability. The following is an overview of the histogram method for comparing the sampling/ message rate: 
 
 *PHOTO*
 
-
 ## Lab #6 Outcomes
 
-This lab was a great chance to further improve the PID-controller from Lab #5 for orientation-based control. The tuning for the individual gain controllers for proportional, integral, and derivative constants provided a strong in-depth analysis for their individual contributions to motor dynamics. This lab was completed with Jamison Taylor, assisted from AI tools for minor debugging, and referenced against Tyler Wisnieski’s GitHub page for comparing effective code structures.
+This lab was a great chance to integrate PD knowledge from previous System Dynamics classes into real-world, robotic application. The tuning for the individual gain controllers for proportional and derivative constants provided a strong in-depth analysis for their individual contributions to motor dynamics. This lab was completed with Jamison Taylor, assisted from AI tools for minor debugging, and referenced against Tyler Wisnieski’s GitHub page for comparing effective code structures.
