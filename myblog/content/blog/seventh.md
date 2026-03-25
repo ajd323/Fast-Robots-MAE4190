@@ -15,7 +15,7 @@ Lab #7 is an opportunity for integrating a Kalman Filter for the motion of the s
 
 The stunt car configuration is still the same from all previous labs, including wired components, ToF locations, and overall assembly (with the 3D printed plates). The following is an image of the stunt car and sensors for the lab:
 
-*PHOTO*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab7_1.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 An additional BLE case was implemented on the Artemis Nano Board to act as a control system for the ramming action and the Kalman Filter. These are controlled with new BLE functions and a basic “notify” Python function in Jupyter Notebook:
 
@@ -63,11 +63,11 @@ Altogether, the lab report is primarily a walkthrough of the first implementatio
 
 A basic test case was conducted running the car with 50% motor speed into the wall and continuously streaming the data through BLE.
 
-*VIDEO*
+<iframe width="560" height="315" src="https://www.youtube.com/embed/ogM4PTHyK7E" title="Oscilloscope Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 - *Estimate Drag and Momentum*: With motor input at 50%, an initial wall ramming test was conducted in order to determine the viability of the post-processing methods for velocity and acceleration. This method yielded an estimated steady-state (90%) velocity at 1367.02 mm/s and a d/m value at 0.0864, which appeared reasonable given the use case. The following charts and .CSV files of the raw data were developed from this testing:
 
-*PHOTO*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab7_2.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 Jupyter Notebook (Python)
 ```cpp
@@ -96,12 +96,12 @@ df["accel"] = np.gradient(df["vel_smooth"], df["time_s"])
 
 - *Initialize KF (Python)*: Following the steps provided by the lab instructions, the A, B, and C matrices for the Kalman Filtering process are computed in the Jupyter Notebook, Python environment.
 
-*PHOTO*
+*PHOTO*<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab7_3.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 - *Basic Kalman Filter*: With these attributes processed, the actual Kalman Filter is processed and graphed in conjunction with the process and sensor noise covariance values. For this specific usage, the following standard deviations (with covariance) are chosen:
     1. **ToF Sensors**: ~2.5 mm (6.25 mm), determined through an experimental method where the car is at a fixed distance of ~1400 mm, sampled every 50 ms. From this experiment, the standard deviation from the mean datapoint was estimated to be ~2.5 mm
 
-    *PHOTO*
+    <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab7_4.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
     2. **Velocity Process**: ~340.00 mm/s, calculated with a basic Python script that estimated the standard deviation of the velocity estimate after 1 second (with the formula demonstrated in class lecture)
 
@@ -114,7 +114,7 @@ df["accel"] = np.gradient(df["vel_smooth"], df["time_s"])
     vel_std_1s = sigma_2 * np.sqrt(steps_per_second)
     ```
 
-    *PHOTO*
+   <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab7_5.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
     3. **Position Process**: ~4.25 mm, calculated with a similar Python script that estimated the standard deviation of the position estimate after 1 second (with the formula demonstrated in class lecture)
 
@@ -127,11 +127,13 @@ df["accel"] = np.gradient(df["vel_smooth"], df["time_s"])
     pos_std_1s = sigma_1 * np.sqrt(steps_per_second)
     ```
 
-    *PHOTO*
+    <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab7_6.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
     This yielded the following graph that demonstrated high-accuracy for position but moderate deviation at the ends of the velocity estimate through the Kalman Filter (noting that the dots are the previously recorded values and the lines are from the Kalman Filter):
 
-    *PHOTO*
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/78Ac5eJBZIE" title="Oscilloscope Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+    <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab7_7.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
     ## Discussion
 
