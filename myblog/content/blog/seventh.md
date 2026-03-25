@@ -5,6 +5,8 @@ description = ""
 taxonomies = { tags = ["Closed-Loop Design", "PID", "Digital Filtering"] }
 +++
 
+*Please Note: This lab was submitted one day after the deadline (the night of 3/24) after troubleshooting in lab*
+
 ## Summary Lab #7
 
 Lab #7 is an opportunity for integrating a Kalman Filter for the motion of the stunt car, optimizing the process for estimating the distance and velocity attributes of the stunt car with additional information regarding uncertainty and noise. With these additional metrics included into the estimation method for these attributes, this provides better insight on the inputs and observations of the robot. In this lab, the Kalman Filter is integrated both in the Jupyter Notebook (through Python) and the Artemis Nano Board (through C++) and improved by performing basic drives into a wall.
@@ -130,3 +132,7 @@ df["accel"] = np.gradient(df["vel_smooth"], df["time_s"])
     This yielded the following graph that demonstrated high-accuracy for position but moderate deviation at the ends of the velocity estimate through the Kalman Filter (noting that the dots are the previously recorded values and the lines are from the Kalman Filter):
 
     *PHOTO*
+
+    ## Discussion
+
+    This lab was a great chance to integrate the Kalman filter both natively on the robot and through the post-processing software over BLE. It was great to optimize in both Python and C++, providing a greater understanding of computing complex matrices in these coding languages. This lab was completed with Jamison Taylor, and assisted from AI tools for minor debugging.
