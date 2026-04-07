@@ -96,7 +96,7 @@ df["accel"] = np.gradient(df["vel_smooth"], df["time_s"])
 
 - *Initialize KF (Python)*: Following the steps provided by the lab instructions, the A, B, and C matrices for the Kalman Filtering process are computed in the Jupyter Notebook, Python environment.
 
-*PHOTO*<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab7_3.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab7_3.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 - *Basic Kalman Filter*: With these attributes processed, the actual Kalman Filter is processed and graphed in conjunction with the process and sensor noise covariance values. For this specific usage, the following standard deviations (with covariance) are chosen:
     1. **ToF Sensors**: ~2.5 mm (6.25 mm), determined through an experimental method where the car is at a fixed distance of ~1400 mm, sampled every 50 ms. From this experiment, the standard deviation from the mean datapoint was estimated to be ~2.5 mm

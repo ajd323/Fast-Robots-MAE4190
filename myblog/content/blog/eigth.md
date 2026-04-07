@@ -145,9 +145,9 @@ void flip_step() {
 
 *Flip Test Success Trial #1*
 
-*VIDEO 1*
+Although I am confident in the structure of the code, I am unable to find a surface that is sticky enough both at home and in-lab without the specific sticky pads in the electronics lab. With the low coefficient of friction, the stunt car is required to drive faster with higher sampling of the ToF sensor. Specifically, the drive speed required to meet the flip requirement is higher than the maximum drive speed. As a video for the setup (or as a blooper), here is the final state of operation without the sticky pads (with duck tape added to the floor to improve flipping ability). To replicate the flipping motion, the car is rammed into the wall to simulate the stunt:
 
-*GRAPH 1*
+<iframe width="560" height="315" src="https://www.youtube.com/embed/pmC1CMOQ4ug" title="Oscilloscope Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ### Task B: Stunt Car Drift
 
@@ -274,8 +274,6 @@ void drift_step() {
 *Drift Test Success Trial #1*
 
 *VIDEO 1*
-
-*GRAPH 1*
 
 ## Discussion
 
