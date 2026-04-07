@@ -273,7 +273,7 @@ void drift_step() {
 
 *Drift Test Success Trial #1*
 
-*VIDEO 1*
+<iframe width="560" height="315" src="https://www.youtube.com/embed/20tB2IbpnGg" title="Oscilloscope Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Discussion
 
