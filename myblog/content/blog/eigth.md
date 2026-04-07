@@ -11,7 +11,7 @@ Lab #8 is an opportunity to test the functionality of the linear/orientation PID
 
 ## Lab #8 Outcomes
 
-**Task A: Stunt Car Flip**
+### Task A: Stunt Car Flip
 
 The flip functions has the following requirements to be considered successful from Lab #8:
 - Start at a designated line <4 m away from the wall
@@ -42,7 +42,7 @@ With this in mind, the following BLE case, "Flip," is designed to handle these r
 
 *GRAPH 3*
 
-**Task B: Stunt Car Drift**
+## Task B: Stunt Car Drift
 
 The drift functions has the following requirements to be considered successful from Lab #8:
 - Start at a designated line <4 m away from the wall
