@@ -184,17 +184,17 @@ void sense_area_step() {
 
 **Example Polar Graph Output with Video**
 
-*PHOTO_1*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_1.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
-*VIDEO_1*
+<iframe width="560" height="315" src="https://www.youtube.com/embed/3jClud7FHR0" title="Oscilloscope Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **Orientation PID Controller Graphs**
 
-*PHOTO_2*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_2.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
-*PHOTO_3*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_3.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
-*PHOTO_4*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_4.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 Although there apperas to be some issues maintaining a perfect axis for the duration of the spin, there is consistency with the yaw degree values acheived with the PID controller. With the given code, the stunt car is commanded to move 20 degree clockwise and take a measurement from the initial position. For the previous test computed, the mean error from the expected yaw value is 4.26 degrees, which is within the 5 degree range required for the PID to close within the stunt car script. This, in combination of the visual observations from the video, demonstrate moderate sensor drift assosciated with previously known limitations in the software.
 
@@ -202,28 +202,28 @@ Although there apperas to be some issues maintaining a perfect axis for the dura
 
 A make-shift obstacle area is created in my lab space in order to replicate the narrow spaces of the in-class obstacle course. The following is a photo of the constructed area, the choosen orientation of the stunt car for each trial, and the respective location of each obstacle sensing case:
 
-*PHOTO_5*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_5.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
-*PHOTO_6*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_6.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
-*PHOTO_7*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_7.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 For this stage, each of the aforementioned positiosn are measured, streamed through BLE, and han-compiled onto a singular .CSV file for clarity (screenshot below).
 
-- *Position #1* *PHOTO_8*
+- *Position #1* <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_8.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
-- *Position #2* *PHOTO_9*
+- *Position #2* <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_9.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
-- *Position #3* *PHOTO_10*
+- *Position #3* <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_10.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
-- *Position #4* *PHOTO_11*
+- *Position #4* <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_11.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
-- *Position #5* *PHOTO_12*
+- *Position #5* <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_12.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 
 Finally, as a confirmation of the accuracy of the sensors and the method, position #3 was measured twice back-to-back. As shown in the chart, the consistency proved a high-level of accuracy that provides confidence in building the dividal model of the obstacles:
 
-*PHOTO_13*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_13.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 **Merging Plots for Obstacle Reconstructruction**
 
@@ -278,15 +278,15 @@ plt.savefig("merged_map.png", dpi=150)
 plt.show()
 ```
 
-*PHOTO_14*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_14.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 **Line Based Map**
 
 Finally, with a detailed map of the wall, this information is converted into a line-based map that includes specific coordinates that are accessible for future labs. 
 
-*PHOTO_15*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_15.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
-*Photo_16*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab7_1.png" alt="Lab_9_16" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 ## Discussion
 
