@@ -227,7 +227,63 @@ Finally, as a confirmation of the accuracy of the sensors and the method, positi
 
 **Merging Plots for Obstacle Reconstructruction**
 
+*Matrix Transformation*: To compute the cartesian plot of the obstacles, the stunt car yaw and ToF distances are compiled through generic transformation matricies (as discussed in class). With point #3 set as the obstacle origin (0,0), the other positions were recorded, and used to set the initial positions of the point transformations. After this point, a T-matrix is used to turn the cylindrical measurement (angle and radius) to cartesian (x and y).
 
+With this informaiton, a basic python script is created to a) extract the information stored in an external CSV and b) post-process to provide a cartesian plot of the obstacles. Here is the outcomes from these processes:
+
+*Jupyter Notebook (Python)*
+```cpp
+position_coords = {
+    "Sample Position #1": (-52 / 100,  28 / 100),
+    "Sample Position #2": (-52 / 100, -30 / 100),
+    "Sample Position #3": (  0 / 100,   0 / 100),
+    "Sample Position #4": ( 55 / 100,  35 / 100),
+    "Sample Position #5": ( 55 / 100, -43 / 100),
+}
+colors = ['steelblue', 'darkorange', 'seagreen', 'crimson', 'purple']
+
+def transform_scan(angles, dists, robot_x, robot_y, start_yaw_offset, room_yaw=0):
+    angles_normalized = np.array(angles) - start_yaw_offset - 180
+    angles_rad  = np.deg2rad(angles_normalized)
+    distances_m = np.array(dists) / 1000.0
+    x_room = robot_x + distances_m * np.cos(angles_rad)
+    y_room = robot_y + distances_m * np.sin(angles_rad)
+    return x_room, y_room
+
+fig, ax = plt.subplots(figsize=(12, 12))
+
+for (label, (angles, dists)), color in zip(scans.items(), colors):
+    if label not in position_coords:
+        continue
+    rx, ry, start_yaw = position_coords[label]
+    min_len = min(len(angles), len(dists))
+    angles  = angles[:min_len]
+    dists   = dists[:min_len]
+    x_room, y_room = transform_scan(angles, dists, rx, ry,
+                                     start_yaw_offset=start_yaw,
+                                     room_yaw=room_yaw)
+    ax.scatter(x_room, y_room, c=color, s=60, label=label, zorder=3)
+    ax.plot(rx, ry, 'x', color=color, markersize=14, markeredgewidth=2.5)
+    ax.annotate(label, (rx, ry), textcoords="offset points",
+                xytext=(8, 8), fontsize=9, color=color)
+
+ax.set_xlabel("X (m)")
+ax.set_ylabel("Y (m)")
+ax.set_title("Merged ToF Map - All Positions")
+ax.legend(loc='upper right')
+ax.grid(True, alpha=0.3)
+ax.set_aspect('equal')
+plt.tight_layout()
+plt.savefig("merged_map.png", dpi=150)
+plt.show()
+```
+
+*PHOTO_14*
+
+**Line Based Map**
+
+Finally, with a detailed map of the wall, this information is converted into a line-based map that includes specific coordinates that are accessible for future labs. 
 
 ## Discussion
 
+This lab specifically works with an Now with the methods finalized, future labs will include an estimation for the obstacles for the in-class apparatus.
