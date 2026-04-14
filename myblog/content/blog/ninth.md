@@ -284,6 +284,10 @@ plt.show()
 
 Finally, with a detailed map of the wall, this information is converted into a line-based map that includes specific coordinates that are accessible for future labs. 
 
+*PHOTO_15*
+
+*Photo_16*
+
 ## Discussion
 
-This lab specifically works with an Now with the methods finalized, future labs will include an estimation for the obstacles for the in-class apparatus.
+This lab has been a great experience to bring in basic obstacle visualization on a 2D-plane. This is high-level considering my mechanical background, and having the opportunity to complete such a project is really exciting. Although this lab does not estiamte the obstacles for the in-class apparatus, this lab still finalizes the methods that will be used to copmlete this estimation next lab. This lab was completed with Jamison Taylor, and assisted from AI tools for minor debugging.
