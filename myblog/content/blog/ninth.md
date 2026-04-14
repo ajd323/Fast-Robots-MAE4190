@@ -7,13 +7,13 @@ taxonomies = { tags = [PID-control, Closed-loop control, visualization] }
 
 ## Summary Lab #9
 
-Lab #9 is the first usage of the ToF sensors and dynamic control for visualization of the environment around the stunt car. Whereas previous labs used sinular boundary detection to determine the distance of a singular flat wall or orient the car to a specified orientation, this lab integrates orientation with linear control to determine obstacles surrounding the stunt car. The following is a closed-loop, PID-control of orientation method that is reconstructed in Jupyter Notebook to create a straight line map of the obstacles 360 degrees around the stunt car.
+Lab #9 marks the first application of the ToF sensors and dynamic control for visualizing the environment around the stunt car. Whereas previous labs used singular boundary detection to determine the distance of a singular flat wall or orient the car to a specified orientation, this lab integrates orientation with linear control to determine obstacles surrounding the stunt car. The following is a closed-loop, PID-control of orientation method that is reconstructed in Jupyter Notebook to create a straight line map of the obstacles 360 degrees around the stunt car.
 
 ## Lab #9 Outcomes
 
 **Obstacle Control of Stunt Car**
 
-As a meanss for control and sampling in the open space, a PID-controlled, orietnation-based method was added for determing the obstacles surrounding the stunt car. This was accomplished by first creating "sense_step()" architecture that mirrored the previous PID orietnation and linear step function for control. After this function is called, an orientation PID is used to move the stunt car to 18 different points, where a ToF sensor value and yaw value are saved in indiivdual lists. With "SENSE_TRANMISSION," these are then transmitted from the Redboard Artemis Nano to the laptop fo post-procesing. The following are the respective C++ and Python scripts for computation, in addition to photos of outputs:
+As a means for control and sampling in the open space, a PID-controlled, orientation-based method was added for determining the obstacles surrounding the stunt car. This was accomplished by first creating "sense_step()" architecture that mirrored the previous PID orientation and linear step function for control. After this function is called, an orientation PID is used to move the stunt car to 18 different points, where a ToF sensor value and yaw value are saved in individual lists. With "SENSE_TRANMISSION," these are then transmitted from the Redboard Artemis Nano to the laptop for post-processing. The following are the respective C++ and Python scripts for computation, in addition to photos of outputs:
 
 *Jupyter Notebook (Python)*
 ```cpp
@@ -196,11 +196,11 @@ void sense_area_step() {
 
 <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_4.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
-Although there apperas to be some issues maintaining a perfect axis for the duration of the spin, there is consistency with the yaw degree values acheived with the PID controller. With the given code, the stunt car is commanded to move 20 degree clockwise and take a measurement from the initial position. For the previous test computed, the mean error from the expected yaw value is 4.26 degrees, which is within the 5 degree range required for the PID to close within the stunt car script. This, in combination of the visual observations from the video, demonstrate moderate sensor drift assosciated with previously known limitations in the software.
+Although there appear to be some issues maintaining a perfect axis for the duration of the spin, there is consistency with the yaw degree values achieved with the PID controller. With the given code, the stunt car is commanded to move 20 degrees clockwise and take a measurement from the initial position. For the previous test computed, the mean error from the expected yaw value is 4.26 degrees, which is within the 5 degree range required for the PID to close within the stunt car script. This, in combination with the visual observations from the video, demonstrates moderate sensor drift associated with previously known limitations in the software.
 
 **Reliability of Obstacle Distances**
 
-A make-shift obstacle area is created in my lab space in order to replicate the narrow spaces of the in-class obstacle course. The following is a photo of the constructed area, the choosen orientation of the stunt car for each trial, and the respective location of each obstacle sensing case:
+A make-shift obstacle area is created in my lab space in order to replicate the narrow spaces of the in-class obstacle course. The following is a photo of the constructed area, the chosen orientation of the stunt car for each trial, and the respective location of each obstacle sensing case:
 
 <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_5.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
@@ -208,7 +208,7 @@ A make-shift obstacle area is created in my lab space in order to replicate the 
 
 <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_7.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
-For this stage, each of the aforementioned positiosn are measured, streamed through BLE, and han-compiled onto a singular .CSV file for clarity (screenshot below).
+For this stage, each of the aforementioned positiosn are measured, streamed through BLE, and hand-compiled onto a singular .CSV file for clarity (screenshot below).
 
 - *Position #1* <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_8.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
@@ -220,16 +220,15 @@ For this stage, each of the aforementioned positiosn are measured, streamed thro
 
 - *Position #5* <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_12.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
-
-Finally, as a confirmation of the accuracy of the sensors and the method, position #3 was measured twice back-to-back. As shown in the chart, the consistency proved a high-level of accuracy that provides confidence in building the dividal model of the obstacles:
+Finally, as a confirmation of the accuracy of the sensors and the method, position #3 was measured twice back-to-back. As shown in the chart, the consistency proved a high level of accuracy that provides confidence in building the model of the obstacles:
 
 <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_13.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 **Merging Plots for Obstacle Reconstructruction**
 
-*Matrix Transformation*: To compute the cartesian plot of the obstacles, the stunt car yaw and ToF distances are compiled through generic transformation matricies (as discussed in class). With point #3 set as the obstacle origin (0,0), the other positions were recorded, and used to set the initial positions of the point transformations. After this point, a T-matrix is used to turn the cylindrical measurement (angle and radius) to cartesian (x and y).
+*Matrix Transformation*: To compute the cartesian plot of the obstacles, the stunt car yaw and ToF distances are compiled through generic transformation matricies (as discussed in class). With point #3 set as the obstacle origin (0,0), the other positions were recorded and used to set the initial positions of the point transformations. After this point, a T-matrix is used to turn the cylindrical measurement (angle and radius) into Cartesian (x and y).
 
-With this informaiton, a basic python script is created to a) extract the information stored in an external CSV and b) post-process to provide a cartesian plot of the obstacles. Here is the outcomes from these processes:
+With this informaiton, a basic python script is created to a) extract the information stored in an external CSV and b) post-process to provide a cartesian plot of the obstacles. Here are the outcomes from these processes:
 
 *Jupyter Notebook (Python)*
 ```cpp
@@ -290,4 +289,4 @@ Finally, with a detailed map of the wall, this information is converted into a l
 
 ## Discussion
 
-This lab has been a great experience to bring in basic obstacle visualization on a 2D-plane. This is high-level considering my mechanical background, and having the opportunity to complete such a project is really exciting. Although this lab does not estiamte the obstacles for the in-class apparatus, this lab still finalizes the methods that will be used to copmlete this estimation next lab. This lab was completed with Jamison Taylor, and assisted from AI tools for minor debugging.
+This lab has been a great experience to bring in basic obstacle visualization on a 2D-plane. This is high-level considering my mechanical background, and having the opportunity to complete such a project is really exciting. Although this lab does not estimate the obstacles for the in-class apparatus, this lab still finalizes the methods that will be used to complete this estimation in the next lab. This lab was completed with Jamison Taylor, and assisted from AI tools for minor debugging.
