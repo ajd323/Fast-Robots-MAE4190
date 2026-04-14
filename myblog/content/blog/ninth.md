@@ -2,7 +2,232 @@
 title = "Lab 9: Mapping"
 date = 2026-04-14
 description = ""
-taxonomies = { tags = [] }
+taxonomies = { tags = [PID-control, Closed-loop control, visualization] }
 +++
 
-## Objectives
+## Summary Lab #9
+
+Lab #9 is the first usage of the ToF sensors and dynamic control for visualization of the environment around the stunt car. Whereas previous labs used sinular boundary detection to determine the distance of a singular flat wall or orient the car to a specified orientation, this lab integrates orientation with linear control to determine obstacles surrounding the stunt car. The following is a closed-loop, PID-control of orientation method that is reconstructed in Jupyter Notebook to create a straight line map of the obstacles 360 degrees around the stunt car.
+
+## Lab #9 Outcomes
+
+**Obstacle Control of Stunt Car**
+
+As a meanss for control and sampling in the open space, a PID-controlled, orietnation-based method was added for determing the obstacles surrounding the stunt car. This was accomplished by first creating "sense_step()" architecture that mirrored the previous PID orietnation and linear step function for control. After this function is called, an orientation PID is used to move the stunt car to 18 different points, where a ToF sensor value and yaw value are saved in indiivdual lists. With "SENSE_TRANMISSION," these are then transmitted from the Redboard Artemis Nano to the laptop fo post-procesing. The following are the respective C++ and Python scripts for computation, in addition to photos of outputs:
+
+*Jupyter Notebook (Python)*
+```cpp
+import numpy as np
+import matplotlib.pyplot as plt
+
+def plot_polar(angle_list, distance_list):
+    # Debug: print lengths to see the mismatch
+    # print(f"Angles: {len(angle_list)}, Distances: {len(distance_list)}")
+    # print(f"Angles: {angle_list}")
+    # print(f"Distances: {distance_list}")
+    
+    # Trim to the shorter list to avoid the error
+    min_len = min(len(angle_list), len(distance_list))
+    angle_list    = angle_list[:min_len]
+    distance_list = distance_list[:min_len]
+
+    angles_rad  = np.deg2rad(angle_list)
+    distances_m = np.array(distance_list) / 1000.0
+    ...
+
+    fig, ax = plt.subplots(figsize=(7, 7), subplot_kw=dict(projection='polar'))
+    fig.suptitle("Sense Area Scan for Obstacles", fontsize=14)
+
+    ax.scatter(angles_rad, distances_m, c='steelblue', s=70, zorder=3)
+    ax.plot(np.append(angles_rad, angles_rad[0]),
+            np.append(distances_m, distances_m[0]),
+            color='steelblue', linewidth=1, alpha=0.5)
+
+    for i, (a, d) in enumerate(zip(angles_rad, distances_m)):
+        ax.annotate(f"{d:.2f}m", (a, d), textcoords="offset points",
+                xytext=(6, 6), fontsize=8, color='dimgray')
+
+    ax.set_theta_zero_location('N')
+    ax.set_theta_direction(-1)
+    ax.grid(True, alpha=0.3)
+
+    plt.tight_layout()
+    plt.savefig("sense_area_polar.png", dpi=150)
+    plt.show()
+
+plot_polar(angle_list, distance_list)
+```
+
+*Arduino Code (C++)*
+```cpp
+void loop(){
+  ...
+    if(sense_activate){
+        unsigned long now = millis();
+        if(now - ori_last_PID_time >= ori_PID_interval){
+            ori_last_PID_time = now;
+            sense_area_step();
+        }
+    }
+}
+...
+void yaw_calculator(){
+  ... (use same yaw calculator infrastructure as previous labs) ...
+}
+
+void sense_area_step() {
+  if (sense_index >= 18) {
+    sense_activate = false;
+    ori_PID_control = false;
+    analogWrite(Pin12, 0);
+    analogWrite(Pin13, 0);
+    analogWrite(Pin9, 0);
+    analogWrite(Pin11, 0);
+  }
+  
+  // Current yaw
+  yaw_calculator();
+  float current_yaw = yaw_deg;
+  
+  // Calculate error to target angle
+  float angle_error = ori_PID_target - current_yaw;
+  // Unwrap error to [-180, 180]
+  if (angle_error > 180) angle_error -= 360;
+  if (angle_error < -180) angle_error += 360;
+  
+  // If we're close enough to target angle, take a reading
+  if (fabs(angle_error) < 5.0) {  // Within 5 degrees
+    // Stop motors
+    analogWrite(Pin12, 0);
+    analogWrite(Pin13, 0);
+    analogWrite(Pin9, 0);
+    analogWrite(Pin11, 0);
+    
+    // Wait for robot to stabilize
+    delay(500);
+    
+    // Take ToF reading
+    float tof_reading = ToF_sensor_2.read();
+    yaw_actual_points[sense_index] = tof_reading;
+    
+    // Record actual yaw angle achieved
+    yaw_calculator();
+    float actual_yaw = yaw_deg;
+    
+    ...
+    
+    // Move to next target
+    sense_index++;
+    if (sense_index < 18) {
+      ori_PID_target = yaw_sample_points[sense_index];
+      
+      // Reset PID controller for new target
+      ori_integral_error = 0.0;
+      ori_PID_prev_error = 0.0;
+      ori_prev_d = 0.0;
+      
+      Serial.print("Next target: ");
+      Serial.print(ori_PID_target);
+      Serial.println("°");
+    }
+  }
+  else {
+    // Not at target yet - let orientation PID run
+    // Make sure orientation PID is active
+    if (!ori_PID_control) {
+        ori_PID_control = true;
+        ori_integral_error = 0.0;
+        ori_PID_prev_error = 0.0;
+        ori_PID_last_time = millis();
+    }
+
+    // Compute PID output
+    unsigned long now = millis();
+    float dt = (now - ori_PID_last_time) / 1000.0;
+    if (dt <= 0) dt = 0.001; // Guard against zero dt
+    ori_PID_last_time = now;
+    ori_integral_error += angle_error * dt;
+    float derivative = (angle_error - ori_PID_prev_error) / dt;
+    ori_PID_prev_error = angle_error;
+    float output = 3 * Kop * angle_error + Koi * ori_integral_error + Kod * derivative;
+    output = constrain(output, -255, 255);
+
+    // Apply deadband
+    if (output > 0 && output < 200)  output = 200;
+    if (output < 0 && output > -200) output = -200;
+
+    // Data Logging for PIDs
+    if (ori_PID_counter < time_package_size) {
+      ori_timestamp_value[ori_PID_counter] = now;
+      ori_distance_value[ori_PID_counter]  = current_yaw;
+      ori_motorPWM_value[ori_PID_counter]  = output;
+      ori_proportional_value[ori_PID_counter] = angle_error;
+      ori_PID_counter++;
+    }
+
+    // Drive motors in opposite directions for in-place rotation
+    if (output > 0) {
+      analogWrite(Pin13, (int)output);   // left reverse
+      analogWrite(Pin11, (int)output);   // right forward
+      analogWrite(Pin9,  0);
+      analogWrite(Pin12, 0);
+    } else {
+      float rev = -output;
+      analogWrite(Pin9,  (int)rev);      // left forward
+      analogWrite(Pin12, (int)rev);      // right reverse
+      analogWrite(Pin11, 0);
+      analogWrite(Pin13, 0);
+    }
+  }
+}
+```
+
+**Example Polar Graph Output with Video**
+
+*PHOTO_1*
+
+*VIDEO_1*
+
+**Orientation PID Controller Graphs**
+
+*PHOTO_2*
+
+*PHOTO_3*
+
+*PHOTO_4*
+
+Although there apperas to be some issues maintaining a perfect axis for the duration of the spin, there is consistency with the yaw degree values acheived with the PID controller. With the given code, the stunt car is commanded to move 20 degree clockwise and take a measurement from the initial position. For the previous test computed, the mean error from the expected yaw value is 4.26 degrees, which is within the 5 degree range required for the PID to close within the stunt car script. This, in combination of the visual observations from the video, demonstrate moderate sensor drift assosciated with previously known limitations in the software.
+
+**Reliability of Obstacle Distances**
+
+A make-shift obstacle area is created in my lab space in order to replicate the narrow spaces of the in-class obstacle course. The following is a photo of the constructed area, the choosen orientation of the stunt car for each trial, and the respective location of each obstacle sensing case:
+
+*PHOTO_5*
+
+*PHOTO_6*
+
+*PHOTO_7*
+
+For this stage, each of the aforementioned positiosn are measured, streamed through BLE, and han-compiled onto a singular .CSV file for clarity (screenshot below).
+
+- *Position #1* *PHOTO_8*
+
+- *Position #2* *PHOTO_9*
+
+- *Position #3* *PHOTO_10*
+
+- *Position #4* *PHOTO_11*
+
+- *Position #5* *PHOTO_12*
+
+
+Finally, as a confirmation of the accuracy of the sensors and the method, position #3 was measured twice back-to-back. As shown in the chart, the consistency proved a high-level of accuracy that provides confidence in building the dividal model of the obstacles:
+
+*PHOTO_13*
+
+**Merging Plots for Obstacle Reconstructruction**
+
+
+
+## Discussion
+
