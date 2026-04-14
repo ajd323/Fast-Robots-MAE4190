@@ -285,7 +285,7 @@ Finally, with a detailed map of the wall, this information is converted into a l
 
 <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_15.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
-<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab7_1.png" alt="Lab_9_16" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab9_16.png" alt="Lab_9_16" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 ## Discussion
 
