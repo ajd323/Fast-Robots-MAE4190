@@ -143,6 +143,12 @@ def update_step(sensor):
 
 After compiling these individual functions, the simulation is copmiled with the odometry values, the Bayes Filter values, and the actual position of the stunt car in the simulation. The following is a video of th esimulation running, in addition to some diagrams demonstrating a graph for the localization in the simulation:
 
+**VIDEO_1**
+
+**IMAGE_1**
+
+**IMAGE_2**
+
 ## Discussion
 
 This lab has been a great experience to experience working with the Bayes Filter in order to continue improving stunt car localization on a grid. This proves great promise in real-world integration for better estimation of car motion. This lab was completed with Jamison Taylor, and assisted from AI tools for minor debugging.
