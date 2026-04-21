@@ -141,7 +141,7 @@ def update_step(sensor):
     loc.bel /= np.sum(loc.bel)
 ```
 
-After compiling these individual functions, the simulation is copmiled with the odometry values, the Bayes Filter values, and the actual position of the stunt car in the simulation. The following is a video of th esimulation running, in addition to some diagrams demonstrating a graph for the localization in the simulation:
+After compiling these individual functions, the simulation is copmiled with the odometry values, the Bayes Filter values, and the actual position of the stunt car in the simulation. The following is a video of the simulated running, in addition to some diagrams demonstrating a graph for the localization in the simulation:
 
 **VIDEO_1**
 
