@@ -146,7 +146,7 @@ After compiling these individual functions, the simulation is copmiled with the 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/zOpFvqsHLf0" title="Oscilloscope Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**IMAGE_1**
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab10_1.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 ## Discussion
 
