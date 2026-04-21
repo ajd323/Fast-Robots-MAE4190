@@ -143,11 +143,10 @@ def update_step(sensor):
 
 After compiling these individual functions, the simulation is copmiled with the odometry values, the Bayes Filter values, and the actual position of the stunt car in the simulation. The following is a video of the simulated running, in addition to some diagrams demonstrating a graph for the localization in the simulation:
 
-**VIDEO_1**
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/zOpFvqsHLf0" title="Oscilloscope Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 **IMAGE_1**
-
-**IMAGE_2**
 
 ## Discussion
 
