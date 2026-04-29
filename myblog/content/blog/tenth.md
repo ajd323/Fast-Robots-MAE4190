@@ -2,7 +2,7 @@
 title = "Lab 10: Localization (sim)"
 date = 2026-04-21
 description = ""
-taxonomies = { tags = ["Simulations", "Localization", "Filtering"] }
+taxonomies = { tags = ["Simulations", "Localization", "Filtering", "Bayes Filter"] }
 +++
 
 ## Summary Lab #10
