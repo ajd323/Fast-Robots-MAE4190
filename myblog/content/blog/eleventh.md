@@ -15,7 +15,7 @@ Lab #11 incorporates the Bayes Filter tested and simulated from the previous lab
 
 Major time was lost while troubleshooting backend issues with the simulator for my 2023 MacBook Pro (Apple M2 Pro Chip, 16 GB) in case this is helpful for future reference. After successfully reinstalling the Box2D wheel file and the complimentary pQt files, the following video and graph was attained from running “lab11_sim.ipynb:”
 
-*PHOTO*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab11_1.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/f0OdcNKig6Q" title="Oscilloscope Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -139,13 +139,13 @@ def notif_callback_motion(UUID, Notif_Array):
 
 With these scripts compiled, the localization method was computed at each of the marked out locations in the map, including (5, 3), (5, -3), (0, 3), (0, 0), and (3, 2). The car was oriented facing the wall as shown in the following photo:
 
-*PHOTO*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab11_2.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 Figure 2: Orientation of the stunt car within the wood-frame environment in-lab
 
 * **Initial / Position (0, 0)**
 
-*PHOTO*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab11_3.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 Figure 3: Localization Plotter reconstructed at Position (0, 0) (Blue) with the Real Point (Green)
 
@@ -155,7 +155,7 @@ Resultant Error: (-0.000, -0.000, -150.0)
 
 * **Position (5, 3)**
 
-*PHOTO*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab11_4.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 Figure 3: Localization Plotter reconstructed at Position (5, 3)(Blue) with the Real Point (Green)
 
@@ -165,7 +165,7 @@ Resultant Error: (-0.000, 0.610, -30.0)
 
 * **Position (5, -3)**
 
-*PHOTO*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab11_5.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 Figure 4: Localization Plotter reconstructed at Position (5, -3) (Blue) with the Real Point (Green)
 
@@ -175,7 +175,7 @@ Resultant Error: (1.219, 0.305, 90.0)
 
 * **Position (0, 3)**
 
-*PHOTO*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab11_6.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 Figure 5: Localization Plotter reconstructed at Position (0, 3) (Blue) with the Real Point (Green)
 
@@ -185,7 +185,7 @@ Resultant Error: (-0.305, 0.305, 70.0)
 
 * **Position (-3, -2)**
 
-*PHOTO*
+<img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab11_7.png" alt="Lab_1_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
 Figure 6: Localization Plotter reconstructed at Position (-3, -2) [Blue] with the Real Point [Green]
 
