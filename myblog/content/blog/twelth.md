@@ -30,7 +30,7 @@ Lab #12 is a culmination of the previous labs for both electromechanical design 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/oXGj8ecu-zU" title="Semi-Successful Inverted Pendulum" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
-For my inverted pendulum, I aimed to have the car start from a vertical orientation and add inputs into the system by driving the car forward. Although the drive‑forward behavior was considered, it was ultimately ruled out, as the car struggled significantly to complete a flip. Generally, this uses the yaw measurement on the IMU to estimate instantaneous error and drives both wheel pairs in the appropriate direction to offset the angular displacement.
+For my inverted pendulum, I aimed to have the car start from a vertical orientation and add inputs into the system by driving the car forward. Although the drive‑forward behavior was considered, it was ultimately ruled out, as the car struggled significantly to complete a flip. Generally, this uses the pitch (roll-axis) measurement on the IMU to estimate instantaneous error and drives both wheel pairs in the appropriate direction to offset the angular displacement.
 
 This system uses a very similar setup to previous labs, with helper functions created to store the PID values over BLE and PID inputs controlled and processed in steps within the void loop() setting. The PID controller is a closed loop with proportional, integral, and derivative gains of 20.0, 0.05, and 2.0, respectively. These were hand‑tuned through trial and error to balance effective restoration and limited overshoot. The system uses BLE commands similar to the PID linear and orientation systems from labs (5/6), with "PID_BAL_GAINS" used for setting the PID gains (Kp, Ki, Kd values), "BAL_SAMPLE_RATE" used for setting the PID stepping rate, and "INVERTED_PENDULUM" used for initiating the start of the pendulum action. More specifically for "INVERTED_PENDULUM," the command activates a function known as "PID_step_bal()" which actually controls the stunt car reorientation.
 
@@ -190,7 +190,7 @@ void PID_step_bal() {
     analogWrite(Pin12, 0);
     analogWrite(Pin13, 0);
     tx_estring_value.clear();
-    tx_estring_value.append("Fallen — balance aborted. Pitch=");
+    tx_estring_value.append("Fallen at Pitch=");
     tx_estring_value.append(pitch_deg);
     tx_characteristic_string.writeValue(tx_estring_value.c_str());
     return;
@@ -296,6 +296,8 @@ One of the major points of improvement is the PID control gains chosen for the r
 
 ## Discussion
 
+Overall, the system performed reasonably accurately in maintaining the designated pitch, though with some unreliability. Despite issues in previous labs with PID controllers, additional filters for random and excessive spikes and reconfigurations to the Kalman Filter significantly improved the performance of the script. Unreliability stemmed specifically from environmental and mechanical factors on the stunt car. The surface the stunt car performed on (different tables, the ground, wood, carpet, etc.) impacted drift due to varying levels of wheel slip. Throughout the lab, the stunt car was intentionally run on lab benches to standardize testing, but typically performed more effectively on rougher surfaces such as concrete or carpet.
 
+Mechanically, the car's performance was heavily impacted by battery level and gear backlash. While the impact of the battery is self-explanatory and directly affects motor output, the gear backlash is a more recently isolated issue. Across all labs involving PID control, the stunt car has had inconsistent driving on the left wheel pair, which has required manually adjusting the compensation factor numerous times to allow the car to drive straight. Upon closer inspection, the gears on the left pair had noticeably more backlash than the right, causing the uneven driving. This would unfortunately require extensive mechanical repairs or replacement gears to fix, and is acknowledged here as a contributing factor to imperfect stabilization.
 
-This lab was completed with Jamison Taylor, and assisted from AI tools for minor debugging. Thank you to all of the staff for your help throughout the semester, and I hope you all have a good summer!
+This lab was a great opportunity to bring together various electromechanical and software principles from across the semester into a single, high-impact project. Inverted pendulums are a common portfolio project, and it was valuable to work through one in the context of this class. Despite the challenges in tuning the PID gains, the system performed well on a software level with low latency and managed to remain stabilized for 10-20 second intervals. Future improvements would involve mathematically deriving ideal gains using optimal control theory and repairing the backlash issue in the left gearbox. With these changes, the stunt car would likely perform much more reliably over longer durations. This lab was completed with Jamison Taylor, with assistance from AI tools for minor debugging. Thank you to all of the course staff for your help throughout the semester, and I hope you all have a great summer!
