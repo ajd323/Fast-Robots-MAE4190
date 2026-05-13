@@ -226,7 +226,31 @@ void PID_step_bal() {
 
 Additionally, a Kalman Filter is needed for this application. Although the IMU used for testing has generally been reliable, the sample rate sometimes lags or becomes inconsistent, which caused issues downstream in the workflow. This is further remedied by initializing and warming up the IMU at the start of "INVERSE_PENDULUM" to ensure more consistent data acquisition at the beginning of the robot function. The following is the Kalman Filter integrated for this use case:
 
-**CODE**
+*Arduino Code (C++)*
+```cpp
+BLA::Matrix<2,1> bal_state   = {0, 0};  // [pitch_deg, pitch_rate]
+BLA::Matrix<2,2> bal_sigma   = {1, 0, 0, 1};
+BLA::Matrix<2,1> bal_mu_p;
+BLA::Matrix<2,2> bal_sigma_p;
+BLA::Matrix<1,1> bal_u;
+
+void K_Filt_bal_predict(float dt) {
+  BLA::Matrix<2,2> Ad = {1, dt, 0, 1};
+  BLA::Matrix<2,1> Bd = {0, dt};
+  bal_mu_p    = Ad * bal_state + Bd * bal_u;
+  bal_sigma_p = Ad * bal_sigma * ~Ad + bal_sigma_u;
+}
+
+void K_Filt_bal_update(float pitch_meas) {
+  BLA::Matrix<1,2> C  = {1, 0};
+  BLA::Matrix<2,2> I2 = {1, 0, 0, 1};
+  BLA::Matrix<1,1> S  = C * bal_sigma_p * ~C + bal_sigma_z;
+  BLA::Matrix<2,1> K  = bal_sigma_p * ~C * Inverse(S);
+  float y_tilde = pitch_meas - (C * bal_mu_p)(0, 0);
+  bal_state = bal_mu_p + K * y_tilde;
+  bal_sigma = (I2 - K * C) * bal_sigma_p;
+}
+```
 
 *Outcome Evaluation*
 
