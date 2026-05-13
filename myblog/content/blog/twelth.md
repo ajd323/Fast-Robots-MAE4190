@@ -13,18 +13,24 @@ Lab #12 is a culmination of the previous labs for both electromechanical design 
 
 *Inverted Pendulum Operation*
 
+
 <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab12_1.png" alt="Lab_12_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
+
 
 <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab12_2.png" alt="Lab_12_2" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EvDm_t24ySM" title="Successful Inverted Pendulum" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 
 For my inverted pendulum, I aimed to have the car start from a vertical orientation and add inputs into the system by driving the car forward. Although the drive‑forward behavior was considered, it was ultimately ruled out, as the car struggled significantly to complete a flip. Generally, this uses the yaw measurement on the IMU to estimate instantaneous error and drives both wheel pairs in the appropriate direction to offset the angular displacement.
 
 This system uses a very similar setup to previous labs, with helper functions created to store the PID values over BLE and PID inputs controlled and processed in steps within the void loop() setting. The PID controller is a closed loop with proportional, integral, and derivative gains of 20.0, 0.05, and 2.0, respectively. These were hand‑tuned through trial and error to balance effective restoration and limited overshoot. The system uses BLE commands similar to the PID linear and orientation systems from labs (5/6), with "PID_BAL_GAINS" used for setting the PID gains (Kp, Ki, Kd values), "BAL_SAMPLE_RATE" used for setting the PID stepping rate, and "INVERTED_PENDULUM" used for initiating the start of the pendulum action. More specifically for "INVERTED_PENDULUM," the command activates a function known as "PID_step_bal()" which actually controls the stunt car reorientation.
 
 The following are the relevant BLE commands on the Artemis:
+
 *Arduino Code (C++)*
+
 ```cpp
 enum CommandTypes {
     ...
@@ -107,7 +113,9 @@ case PID_BAL_GAINS: {
 ```
 
 Here is the definition code for the "PID_step_bal()" function, in addition to the integration into the main loop:
+
 *Arduino Code (C++)*
+
 ```cpp
 void loop() {
     ...
@@ -227,6 +235,7 @@ void PID_step_bal() {
 Additionally, a Kalman Filter is needed for this application. Although the IMU used for testing has generally been reliable, the sample rate sometimes lags or becomes inconsistent, which caused issues downstream in the workflow. This is further remedied by initializing and warming up the IMU at the start of "INVERSE_PENDULUM" to ensure more consistent data acquisition at the beginning of the robot function. The following is the Kalman Filter integrated for this use case:
 
 *Arduino Code (C++)*
+
 ```cpp
 BLA::Matrix<2,1> bal_state   = {0, 0};  // [pitch_deg, pitch_rate]
 BLA::Matrix<2,2> bal_sigma   = {1, 0, 0, 1};
@@ -256,19 +265,27 @@ void K_Filt_bal_update(float pitch_meas) {
 
 The robot appears to work moderately well for a short period of time. First, the PWM and PID error charts sent over from "BAL_TRANSMISSION" showed that the motor output was effective in establishing the system and reducing pitch error. This is likely the effect of the Kalman Filter, which, in addition to some improvement in IMU latency, prevented delays in balancing steps in the main loop and reduced cascading error. By observing the packets transmitted through BLE, the robot has lower latency for processing with a 10 ms stepping rate, averaging ~10.88 ms over a 10‑second interval. Additionally, with other outlier‑removal code, the IMU provides high‑accuracy data that prevents long‑term error accumulation. These trends are shown in the following graphs:
 
+
 <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab12_3.png" alt="Lab_12_3" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
+
 
 <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab12_4.png" alt="Lab_12_4" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
 
+
 One of the major points of improvement is the PID control gains chosen for the robot. From previous trials, the robot will sometimes drift constantly without restoring or fall immediately. There are multiple reasons for this issue. The foremost reason is that the robot has an unconventional center of mass due to the addition of the 3D‑printed plate. This means the robot needs to be slightly angled (~85 degrees as opposed to 90 degrees) to maintain appropriate balance. Another reason is that the proportional and derivative gains may not be fully optimized, though they have been tuned by hand as effectively as possible. While the system restored moderately well, the car does aggressively readjust, which sometimes causes large error. Additional trials were run to confirm that this combination of proportional and derivative gains was optimal. Changing the proportional gain prevented the car from effectively re‑orienting and led to perpetual drift. Changing the derivative gain resulted in aggressive oscillations with higher amplitudes during settling. In the future, more mathematical approaches could be used to improve the outcomes. The following are some examples of “unsuccessful” trials during tuning:
+
 
 *Failed Trial (With PID values of 7.5, 0.05, 2.0)*
 
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/kqa6FrNtCM0" title="Unsuccessful Inverted Pendulum" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 
 *Failed Trial (With PID values of 20, 0.05, 1.5)*
 
+
 <iframe width="560" height="315" src="https://www.youtube.com/embed/YTjb7QJMo4E" title="Unsuccessful Inverted Pendulum" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 
 ## Discussion
 
