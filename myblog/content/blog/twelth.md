@@ -11,7 +11,7 @@ Lab #12 is a culmination of the previous labs for both electromechanical design 
 
 ## Lab #12 Outcomes
 
-*Inverted Pendulum Operation*
+*Successful Inverted Pendulum Operation*
 
 
 <img src="https://ajd323.github.io/Fast-Robots-MAE4190/img/FR_Lab12_1.png" alt="Lab_12_1" style="max-width:700px; border-radius:12px; margin:0 0 0 0;" />
@@ -21,6 +21,13 @@ Lab #12 is a culmination of the previous labs for both electromechanical design 
 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/EvDm_t24ySM" title="Successful Inverted Pendulum" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+
+*Other Pendulum Operation Videos*
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/7zSDwW5buZY" title="Semi-Successful Inverted Pendulum" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/oXGj8ecu-zU" title="Semi-Successful Inverted Pendulum" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 
 For my inverted pendulum, I aimed to have the car start from a vertical orientation and add inputs into the system by driving the car forward. Although the drive‑forward behavior was considered, it was ultimately ruled out, as the car struggled significantly to complete a flip. Generally, this uses the yaw measurement on the IMU to estimate instantaneous error and drives both wheel pairs in the appropriate direction to offset the angular displacement.
